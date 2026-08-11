@@ -150,6 +150,36 @@ export const Home = () => {
         )}
       </Map>
 
+      {/* ── Page title (floats over map, top-center) ── */}
+      <div
+        style={{
+          position: "absolute",
+          top: "16px",
+          right: "-100px",
+          // left: "50%",
+          transform: "translateX(-50%)",
+          background: "rgba(20, 22, 25, 0.82)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: "8px",
+          padding: "8px 18px",
+          pointerEvents: "none",
+          zIndex: 10,
+          whiteSpace: "nowrap",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif',
+            fontSize: "15px",
+            fontWeight: "700",
+            color: "#e8eaed",
+            letterSpacing: "0.01em",
+          }}
+        >
+          Camisa's Travel Bucket List
+        </span>
+      </div>
+
       {/* ── Gift-status filter panel (floats over map, bottom-left) ── */}
       <div
         style={{

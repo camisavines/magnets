@@ -41,7 +41,7 @@ const S = {
     flexDirection: 'column',
     height: '100%',
     fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif',
-    background: '#f0f2f5',
+    background: '#111213',
   },
 
   /* Top toolbar */
@@ -50,9 +50,9 @@ const S = {
     alignItems: 'center',
     gap: '10px',
     padding: '10px 16px',
-    background: '#fff',
-    borderBottom: '1px solid #e0e0e0',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+    background: '#1a1c1f',
+    borderBottom: '1px solid #2e3238',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
     zIndex: 10,
     flexShrink: 0,
   },
@@ -63,9 +63,10 @@ const S = {
     width: '30px',
     height: '30px',
     padding: 0,
-    border: '1px solid rgba(0,0,0,0.18)',
+    border: '1px solid #3a3f47',
     borderRadius: '6px',
-    background: '#fff',
+    background: '#22252a',
+    color: '#e8eaed',
     cursor: 'pointer',
     fontSize: '16px',
     lineHeight: '1',
@@ -74,12 +75,12 @@ const S = {
     margin: 0,
     fontSize: '15px',
     fontWeight: '700',
-    color: '#1a1a1a',
+    color: '#e8eaed',
   },
   toolbarCount: {
     marginLeft: 'auto',
     fontSize: '13px',
-    color: '#666',
+    color: '#8b9098',
   },
 
   /* Two-column body */
@@ -94,8 +95,8 @@ const S = {
     width: '25%',
     minWidth: '220px',
     maxWidth: '320px',
-    background: '#fff',
-    borderRight: '1px solid #e0e0e0',
+    background: '#1a1c1f',
+    borderRight: '1px solid #2e3238',
     overflowY: 'auto',
     padding: '20px 16px',
     flexShrink: 0,
@@ -106,7 +107,7 @@ const S = {
     fontWeight: '700',
     textTransform: 'uppercase',
     letterSpacing: '0.06em',
-    color: '#888',
+    color: '#8b9098',
   },
   filterSection: {
     marginBottom: '24px',
@@ -116,17 +117,17 @@ const S = {
     marginBottom: '8px',
     fontSize: '13px',
     fontWeight: '600',
-    color: '#333',
+    color: '#c9cdd4',
   },
   searchInput: {
     width: '100%',
     padding: '7px 10px',
     fontSize: '13px',
-    border: '1px solid #ddd',
+    border: '1px solid #3a3f47',
     borderRadius: '6px',
     outline: 'none',
-    background: '#fafafa',
-    color: '#1a1a1a',
+    background: '#22252a',
+    color: '#e8eaed',
   },
   checkboxRow: {
     display: 'flex',
@@ -137,7 +138,7 @@ const S = {
   },
   checkboxLabel: {
     fontSize: '13px',
-    color: '#333',
+    color: '#c9cdd4',
     userSelect: 'none',
     cursor: 'pointer',
   },
@@ -150,7 +151,7 @@ const S = {
   },
   radioLabel: {
     fontSize: '13px',
-    color: '#333',
+    color: '#c9cdd4',
     userSelect: 'none',
     cursor: 'pointer',
   },
@@ -160,15 +161,15 @@ const S = {
     padding: '8px',
     fontSize: '13px',
     fontWeight: '600',
-    color: '#1a73e8',
+    color: '#4da3ff',
     background: 'transparent',
-    border: '1px solid #1a73e8',
+    border: '1px solid #1a6edb',
     borderRadius: '6px',
     cursor: 'pointer',
   },
   divider: {
     border: 'none',
-    borderTop: '1px solid #ebebeb',
+    borderTop: '1px solid #2e3238',
     margin: '0 0 24px',
   },
 
@@ -186,16 +187,16 @@ const S = {
   emptyState: {
     textAlign: 'center',
     padding: '60px 20px',
-    color: '#888',
+    color: '#8b9098',
     fontSize: '14px',
   },
 
   /* ── Card ── */
   card: {
-    background: '#fff',
+    background: '#1a1c1f',
     borderRadius: '10px',
-    border: '1px solid #e8e8e8',
-    boxShadow: '0 2px 6px rgba(0,0,0,0.07)',
+    border: '1px solid #2e3238',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.35)',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
@@ -205,7 +206,7 @@ const S = {
     height: '150px',
     objectFit: 'cover',
     display: 'block',
-    background: '#e0e0e0',
+    background: '#22252a',
   },
   cardBody: {
     padding: '12px 14px 14px',
@@ -218,7 +219,7 @@ const S = {
     margin: 0,
     fontSize: '15px',
     fontWeight: '700',
-    color: '#1a1a1a',
+    color: '#e8eaed',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -226,19 +227,31 @@ const S = {
   cardCountry: {
     margin: 0,
     fontSize: '12px',
-    color: '#777',
+    color: '#8b9098',
   },
   cardMeta: {
     margin: '4px 0 0',
     fontSize: '12px',
-    color: '#555',
+    color: '#8b9098',
   },
   cardLink: {
     marginTop: '10px',
     fontSize: '12px',
-    color: '#1a73e8',
+    color: '#4da3ff',
     textDecoration: 'none',
     fontWeight: '600',
+  },
+
+  /* Mobile-only filter toggle button (hidden on desktop via CSS) */
+  filterToggleButton: {
+    padding: '5px 10px',
+    fontSize: '12px',
+    fontWeight: '600',
+    color: '#c9cdd4',
+    background: '#22252a',
+    border: '1px solid #3a3f47',
+    borderRadius: '6px',
+    cursor: 'pointer',
   },
 };
 
@@ -248,6 +261,11 @@ const S = {
 
 export const ListView = () => {
   const navigate = useNavigate();
+
+  /* Sidebar collapse state — closed by default on mobile */
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth > 640
+  );
 
   /* Derive sorted unique countries & states from the dataset */
   const allCountries = useMemo(
@@ -288,7 +306,7 @@ export const ListView = () => {
     const search = searchText.trim().toLowerCase();
 
     return CITIES.filter(city => {
-      if (search && !city.city.toLowerCase().includes(search)) return false;
+      if (search && !city.city.toLowerCase().includes(search) && !city.state.toLowerCase().includes(search) && !city.country.toLowerCase().includes(search)) return false;
       if (selectedCountries.size > 0 && !selectedCountries.has(city.country)) return false;
       if (selectedStates.size > 0 && !selectedStates.has(city.state)) return false;
       const pop = parsePopulation(city.population);
@@ -323,21 +341,39 @@ export const ListView = () => {
         <span style={S.toolbarCount}>
           {filtered.length} of {CITIES.length} cities
         </span>
+        <button
+          className="lv-filter-toggle"
+          style={S.filterToggleButton}
+          type="button"
+          aria-expanded={sidebarOpen}
+          aria-controls="lv-sidebar"
+          onClick={() => setSidebarOpen(o => !o)}
+        >
+          {sidebarOpen ? '✕ Filters' : '⚙ Filters'}{hasActiveFilters ? ' •' : ''}
+        </button>
       </div>
 
       {/* ── Two-column body ── */}
       <div style={S.body} className="lv-body">
         {/* ── Sidebar ── */}
-        <aside style={S.sidebar} className="lv-sidebar" aria-label="Filter panel">
+        <aside
+          id="lv-sidebar"
+          style={{
+            ...S.sidebar,
+            ...(sidebarOpen ? {} : {display: 'none'}),
+          }}
+          className="lv-sidebar"
+          aria-label="Filter panel"
+        >
           <p style={S.sidebarHeading}>Filters</p>
 
           {/* Search */}
           <div style={S.filterSection}>
-            <label style={S.filterLabel} htmlFor="city-search">City name</label>
+            <label style={S.filterLabel} htmlFor="city-search">City, state, or country</label>
             <input
               id="city-search"
               type="search"
-              placeholder="Search…"
+              placeholder="Search by city, state, or country…"
               value={searchText}
               onChange={e => setSearchText(e.target.value)}
               style={S.searchInput}
@@ -452,19 +488,25 @@ export const ListView = () => {
         </main>
       </div>
 
-      {/* Responsive: stack sidebar on small screens */}
+      {/* Responsive styles */}
       <style>{`
+        /* Hide the filter toggle button on desktop */
+        .lv-filter-toggle { display: none; }
+
         @media (max-width: 640px) {
-          /* The body flex container becomes a column */
+          /* Show the toggle button */
+          .lv-filter-toggle { display: block !important; }
+          /* Stack layout */
           .lv-body { flex-direction: column !important; }
-          /* Sidebar goes full-width and auto height */
+          /* Sidebar goes full-width when open */
           .lv-sidebar {
             width: 100% !important;
             max-width: 100% !important;
             min-width: unset !important;
             border-right: none !important;
-            border-bottom: 1px solid #e0e0e0 !important;
-            max-height: 340px;
+            border-bottom: 1px solid #2e3238 !important;
+            max-height: 60vh;
+            overflow-y: auto;
           }
           /* Cards single column */
           .lv-grid { grid-template-columns: 1fr !important; }
