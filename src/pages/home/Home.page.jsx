@@ -141,7 +141,7 @@ export const Home = () => {
         )}
       </Map>
 
-      <ControlPanel />
+      {/* <ControlPanel /> */}
     </>
   );
 }
