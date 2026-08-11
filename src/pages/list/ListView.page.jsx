@@ -12,6 +12,15 @@ function parsePopulation(str = '') {
   return parseInt(str.replace(/,/g, ''), 10) || 0;
 }
 
+// Shared with Home map — keep the blue value in sync with pin.jsx PIN_COLOR_GIFT
+const GIFT_PIN_COLOR = '#1a6edb';
+
+const GIFT_FILTER_OPTIONS = [
+  {value: 'all',       label: 'All'},
+  {value: 'gifts',     label: 'Gifts only'},
+  {value: 'non-gifts', label: 'Non-gifts only'},
+];
+
 const POPULATION_RANGES = [
   {label: 'Any', min: 0, max: Infinity},
   {label: 'Under 100 K', min: 0, max: 100_000},
@@ -255,6 +264,7 @@ export const ListView = () => {
   const [selectedCountries, setSelectedCountries] = useState(new Set());
   const [selectedStates, setSelectedStates] = useState(new Set());
   const [popRangeIndex, setPopRangeIndex] = useState(0); // 0 = "Any"
+  const [giftFilter, setGiftFilter] = useState('all');
 
   const toggleSet = useCallback((setter, value) => {
     setter(prev => {
@@ -269,6 +279,7 @@ export const ListView = () => {
     setSelectedCountries(new Set());
     setSelectedStates(new Set());
     setPopRangeIndex(0);
+    setGiftFilter('all');
   }, []);
 
   /* Filtered cities */
@@ -282,15 +293,18 @@ export const ListView = () => {
       if (selectedStates.size > 0 && !selectedStates.has(city.state)) return false;
       const pop = parsePopulation(city.population);
       if (pop < range.min || pop >= range.max) return false;
+      if (giftFilter === 'gifts'     && !city.gift)          return false;
+      if (giftFilter === 'non-gifts' &&  city.gift === true)  return false;
       return true;
     });
-  }, [searchText, selectedCountries, selectedStates, popRangeIndex]);
+  }, [searchText, selectedCountries, selectedStates, popRangeIndex, giftFilter]);
 
   const hasActiveFilters =
     searchText.trim() !== '' ||
     selectedCountries.size > 0 ||
     selectedStates.size > 0 ||
-    popRangeIndex !== 0;
+    popRangeIndex !== 0 ||
+    giftFilter !== 'all';
 
   return (
     <div style={S.page}>
@@ -363,6 +377,35 @@ export const ListView = () => {
                 <span style={S.checkboxLabel}>{country}</span>
               </label>
             ))}
+          </div>
+
+          <hr style={S.divider} />
+
+          {/* Gift Status */}
+          <div style={S.filterSection}>
+            <span style={S.filterLabel}>Gift Status</span>
+            {GIFT_FILTER_OPTIONS.map(opt => (
+              <label key={opt.value} style={S.radioRow}>
+                <input
+                  type="radio"
+                  name="lv-gift-filter"
+                  checked={giftFilter === opt.value}
+                  onChange={() => setGiftFilter(opt.value)}
+                />
+                <span style={S.radioLabel}>{opt.label}</span>
+              </label>
+            ))}
+            {/* Mini legend */}
+            <div style={{marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '3px'}}>
+              <span style={{display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#777'}}>
+                <svg width="10" height="10" viewBox="0 0 24 24"><path d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z" fill={GIFT_PIN_COLOR}/></svg>
+                Gift
+              </span>
+              <span style={{display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#777'}}>
+                <svg width="10" height="10" viewBox="0 0 24 24"><path d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z" fill="#d00"/></svg>
+                Not a gift
+              </span>
+            </div>
           </div>
 
           <hr style={S.divider} />

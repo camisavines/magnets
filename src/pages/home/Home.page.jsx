@@ -65,14 +65,28 @@ function ListViewButton({onClick}) {
   return null;
 }
 
+// 'all' | 'gifts' | 'non-gifts'
+const GIFT_FILTER_OPTIONS = [
+  {value: 'all',       label: 'All'},
+  {value: 'gifts',     label: 'Gifts only'},
+  {value: 'non-gifts', label: 'Non-gifts only'},
+];
+
 export const Home = () => {
   const navigate = useNavigate();
   const [popupInfo, setPopupInfo] = useState(null);
+  const [giftFilter, setGiftFilter] = useState('all');
   const goToListView = useCallback(() => navigate('/list'), [navigate]);
+
+  const visibleCities = useMemo(() => {
+    if (giftFilter === 'gifts')     return CITIES.filter(c => c.gift === true);
+    if (giftFilter === 'non-gifts') return CITIES.filter(c => !c.gift);
+    return CITIES;
+  }, [giftFilter]);
 
   const pins = useMemo(
     () =>
-      CITIES.map((city, index) => (
+      visibleCities.map((city, index) => (
         <Marker
           key={`marker-${index}`}
           longitude={city.longitude}
@@ -85,14 +99,14 @@ export const Home = () => {
             setPopupInfo(city);
           }}
         >
-          <Pin />
+          <Pin gift={city.gift === true} />
         </Marker>
       )),
-    []
+    [visibleCities]
   );
 
   return (
-    <>
+    <div style={{position: 'relative', width: '100%', height: '100vh'}}>
       <Map
         initialViewState={{
           latitude: 40,
@@ -134,7 +148,50 @@ export const Home = () => {
         )}
       </Map>
 
+      {/* ── Gift-status filter panel (floats over map, bottom-left) ── */}
+      <div style={{
+        position: 'absolute',
+        bottom: '32px',
+        left: '12px',
+        background: 'rgba(255,255,255,0.95)',
+        border: '1px solid #ddd',
+        borderRadius: '8px',
+        padding: '12px 14px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+        fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif',
+        fontSize: '13px',
+        minWidth: '160px',
+        zIndex: 10,
+      }}>
+        <p style={{margin: '0 0 8px', fontWeight: '700', color: '#333', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.06em'}}>
+          Gift Status
+        </p>
+        {GIFT_FILTER_OPTIONS.map(opt => (
+          <label key={opt.value} style={{display: 'flex', alignItems: 'center', gap: '7px', padding: '3px 0', cursor: 'pointer'}}>
+            <input
+              type="radio"
+              name="map-gift-filter"
+              value={opt.value}
+              checked={giftFilter === opt.value}
+              onChange={() => setGiftFilter(opt.value)}
+            />
+            <span style={{color: '#222'}}>{opt.label}</span>
+          </label>
+        ))}
+        {/* Legend */}
+        <div style={{marginTop: '10px', borderTop: '1px solid #eee', paddingTop: '8px', display: 'flex', flexDirection: 'column', gap: '4px'}}>
+          <span style={{display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#555'}}>
+            <svg width="12" height="12" viewBox="0 0 24 24"><path d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z" fill="#1a6edb"/></svg>
+            Gift
+          </span>
+          <span style={{display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#555'}}>
+            <svg width="12" height="12" viewBox="0 0 24 24"><path d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z" fill="#d00"/></svg>
+            Not a gift
+          </span>
+        </div>
+      </div>
+
       {/* <ControlPanel /> */}
-    </>
+    </div>
   );
 }

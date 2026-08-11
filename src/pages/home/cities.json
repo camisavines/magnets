@@ -197,7 +197,7 @@
     "state": "Istanbul Province",
     "latitude": 41.0082,
     "longitude": 28.9784,
-    "gift": false
+    "gift": true
   },
   {
     "country": "USA",
@@ -206,7 +206,8 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/240px-Above_Gotham.jpg",
     "state": "New York",
     "latitude": 40.6643,
-    "longitude": -73.9385
+    "longitude": -73.9385,
+    "gift": true
   },
   {
     "country": "USA",
@@ -215,7 +216,8 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/LA_Skyline_Mountains2.jpg/240px-LA_Skyline_Mountains2.jpg",
     "state": "California",
     "latitude": 34.0194,
-    "longitude": -118.4108
+    "longitude": -118.4108,
+    "gift": true
   },
   {
     "country": "USA",
@@ -224,7 +226,8 @@
     "image": "https://live.staticflickr.com/522/17952969184_6a4364da19_b.jpg",
     "state": "Illinois",
     "latitude": 41.8376,
-    "longitude": -87.6818
+    "longitude": -87.6818,
+    "gift": false
   },
   {
     "country": "USA",
@@ -242,7 +245,8 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Downtown_Phoenix_Aerial_Looking_Northeast.jpg/207px-Downtown_Phoenix_Aerial_Looking_Northeast.jpg",
     "state": "Arizona",
     "latitude": 33.5722,
-    "longitude": -112.088
+    "longitude": -112.088,
+    "gift": true
   },
   {
     "country": "USA",
@@ -269,16 +273,8 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/US_Navy_110604-N-NS602-574_Navy_and_Marine_Corps_personnel%2C_along_with_community_leaders_from_the_greater_San_Diego_area_come_together_to_commemora.jpg/240px-US_Navy_110604-N-NS602-574_Navy_and_Marine_Corps_personnel%2C_along_with_community_leaders_from_the_greater_San_Diego_area_come_together_to_commemora.jpg",
     "state": "California",
     "latitude": 32.8153,
-    "longitude": -117.135
-  },
-  {
-    "country": "USA",
-    "city": "Dallas",
-    "population": "1,197,816",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Dallas_skyline_daytime.jpg/240px-Dallas_skyline_daytime.jpg",
-    "state": "Texas",
-    "latitude": 32.7757,
-    "longitude": -96.7967
+    "longitude": -117.135,
+    "gift": true
   },
   {
     "country": "USA",
@@ -287,7 +283,8 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Downtown_San_Jose_skyline.PNG/240px-Downtown_San_Jose_skyline.PNG",
     "state": "California",
     "latitude": 37.2969,
-    "longitude": -121.8193
+    "longitude": -121.8193,
+    "gift": false
   },
   {
     "country": "USA",
@@ -300,30 +297,12 @@
   },
   {
     "country": "USA",
-    "city": "Jacksonville",
-    "population": "821,784",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Skyline_of_Jacksonville_FL%2C_South_view_20160706_1.jpg/240px-Skyline_of_Jacksonville_FL%2C_South_view_20160706_1.jpg",
-    "state": "Florida",
-    "latitude": 30.337,
-    "longitude": -81.6613
-  },
-  {
-    "country": "USA",
     "city": "San Francisco",
     "population": "805,235",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/San_Francisco_skyline_from_Coit_Tower.jpg/240px-San_Francisco_skyline_from_Coit_Tower.jpg",
     "state": "California",
     "latitude": 37.7751,
     "longitude": -122.4193
-  },
-  {
-    "country": "USA",
-    "city": "Columbus",
-    "population": "787,033",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Columbus-ohio-skyline-panorama.jpg/240px-Columbus-ohio-skyline-panorama.jpg",
-    "state": "Ohio",
-    "latitude": 39.9848,
-    "longitude": -82.985
   },
   {
     "country": "USA",
@@ -335,51 +314,6 @@
     "longitude": -86.1459
   },
   {
-    "country": "USA",
-    "city": "Fort Worth",
-    "population": "741,206",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/FortWorthTexasSkylineW.jpg/240px-FortWorthTexasSkylineW.jpg",
-    "state": "Texas",
-    "latitude": 32.7795,
-    "longitude": -97.3463
-  },
-  {
-    "country": "USA",
-    "city": "Charlotte",
-    "population": "731,424",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Charlotte_skyline45647.jpg/222px-Charlotte_skyline45647.jpg",
-    "state": "North Carolina",
-    "latitude": 35.2087,
-    "longitude": -80.8307
-  },
-  {
-    "country": "USA",
-    "city": "Seattle",
-    "population": "608,660",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SeattleI5Skyline.jpg/240px-SeattleI5Skyline.jpg",
-    "state": "Washington",
-    "latitude": 47.6205,
-    "longitude": -122.3509
-  },
-  {
-    "country": "USA",
-    "city": "Denver",
-    "population": "600,158",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/DenverCP.JPG/240px-DenverCP.JPG",
-    "state": "Colorado",
-    "latitude": 39.7618,
-    "longitude": -104.8806
-  },
-  {
-    "country": "USA",
-    "city": "El Paso",
-    "population": "649,121",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Downtown_El_Paso_at_sunset.jpeg/240px-Downtown_El_Paso_at_sunset.jpeg",
-    "state": "Texas",
-    "latitude": 31.8484,
-    "longitude": -106.427
-  },
-    {
     "country": "USA",
     "city": "Honolulu",
     "population": "649,121",
