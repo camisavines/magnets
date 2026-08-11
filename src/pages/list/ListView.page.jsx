@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import CITIES from '../home/cities.json';
 
 const styles = {
@@ -59,6 +59,13 @@ const styles = {
     border: '1px solid #e0e0e0',
     borderRadius: '6px',
   },
+  detailLink: {
+    display: 'inline-block',
+    marginTop: '6px',
+    fontSize: '12px',
+    color: '#1a73e8',
+    textDecoration: 'none',
+  },
   image: {
     width: '80px',
     height: '54px',
@@ -109,6 +116,13 @@ export const ListView = () => {
               <div>
                 <p style={styles.cityName}>{city.city}, {city.state}</p>
                 <p style={styles.meta}>Population: {city.population}</p>
+                <Link
+                  to={`/location/${city.city.toLowerCase().replace(/\s+/g, '-')}`}
+                  state={city}
+                  style={styles.detailLink}
+                >
+                  View details →
+                </Link>
               </div>
             </li>
           ))}

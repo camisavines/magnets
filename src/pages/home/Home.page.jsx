@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useState, useMemo, useCallback} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import Map, {
   Marker,
   Popup,
@@ -130,6 +130,13 @@ export const Home = () => {
               </a>
             </div>
             <img width="100%" src={popupInfo.image} />
+            <Link
+              to={`/location/${popupInfo.city.toLowerCase().replace(/\s+/g, '-')}`}
+              state={popupInfo}
+              style={{display: 'block', marginTop: '6px', fontSize: '12px'}}
+            >
+              View details →
+            </Link>
           </Popup>
         )}
       </Map>

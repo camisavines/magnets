@@ -1,3 +1,4 @@
 import { Home } from "./home/Home.page";
 import { ListView } from "./list/ListView.page";
-export { Home, ListView };
+import { DetailView } from "./location/DetailView";
+export { Home, ListView, DetailView };
