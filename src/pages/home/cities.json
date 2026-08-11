@@ -1,5 +1,205 @@
 [
   {
+    "country": "USA",
+    "city": "South Bend",
+    "population": "103,453",
+    "image": "https://loremflickr.com/1200/800/southbend,indiana",
+    "state": "Indiana",
+    "latitude": 41.6764,
+    "longitude": -86.252,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "Austin",
+    "population": "979,882",
+    "image": "https://loremflickr.com/1200/800/austin,texas",
+    "state": "Texas",
+    "latitude": 30.2672,
+    "longitude": -97.7431,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "Houston",
+    "population": "2,314,157",
+    "image": "https://loremflickr.com/1200/800/houston,texas",
+    "state": "Texas",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "San Antonio",
+    "population": "1,495,295",
+    "image": "https://loremflickr.com/1200/800/sanantonio,texas",
+    "state": "Texas",
+    "latitude": 29.4241,
+    "longitude": -98.4936,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "Miami",
+    "population": "442,241",
+    "image": "https://loremflickr.com/1200/800/miami,florida",
+    "state": "Florida",
+    "latitude": 25.7617,
+    "longitude": -80.1918,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "San Francisco",
+    "population": "808,437",
+    "image": "https://loremflickr.com/1200/800/sanfrancisco,california",
+    "state": "California",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "Santa Cruz",
+    "population": "62,956",
+    "image": "https://loremflickr.com/1200/800/santacruz,california",
+    "state": "California",
+    "latitude": 36.9741,
+    "longitude": -122.0308,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "San Jose",
+    "population": "1,013,240",
+    "image": "https://loremflickr.com/1200/800/sanjose,california",
+    "state": "California",
+    "latitude": 37.3382,
+    "longitude": -121.8863,
+    "gift": false
+  },
+  {
+    "country": "Japan",
+    "city": "Tokyo",
+    "population": "14,047,594",
+    "image": "https://loremflickr.com/1200/800/tokyo,japan",
+    "state": "Tokyo",
+    "latitude": 35.6762,
+    "longitude": 139.6503,
+    "gift": false
+  },
+  {
+    "country": "Japan",
+    "city": "Osaka",
+    "population": "2,811,565",
+    "image": "https://loremflickr.com/1200/800/osaka,japan",
+    "state": "Osaka",
+    "latitude": 34.6937,
+    "longitude": 135.5023,
+    "gift": false
+  },
+  {
+    "country": "Brazil",
+    "city": "Rio de Janeiro",
+    "population": "6,211,223",
+    "image": "https://loremflickr.com/1200/800/rio,de,janeiro,brazil",
+    "state": "Rio de Janeiro",
+    "latitude": -22.9068,
+    "longitude": -43.1729,
+    "gift": false
+  },
+  {
+    "country": "Turks and Caicos Islands",
+    "city": "Providenciales",
+    "population": "24,904",
+    "image": "https://loremflickr.com/1200/800/providenciales,turksandcaicos",
+    "state": "Turks and Caicos Islands",
+    "latitude": 21.773,
+    "longitude": -72.2659,
+    "gift": false
+  },
+  {
+    "country": "Mexico",
+    "city": "Cancún",
+    "population": "888,797",
+    "image": "https://loremflickr.com/1200/800/cancun,mexico",
+    "state": "Quintana Roo",
+    "latitude": 21.1619,
+    "longitude": -86.8515,
+    "gift": false
+  },
+  {
+    "country": "Saint Lucia",
+    "city": "Castries",
+    "population": "20,000",
+    "image": "https://loremflickr.com/1200/800/castries,saintlucia",
+    "state": "Castries District",
+    "latitude": 14.0101,
+    "longitude": -60.9875,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "Orlando",
+    "population": "333,888",
+    "image": "https://loremflickr.com/1200/800/orlando,florida",
+    "state": "Florida",
+    "latitude": 28.5383,
+    "longitude": -81.3792,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "Raleigh",
+    "population": "499,825",
+    "image": "https://loremflickr.com/1200/800/raleigh,northcarolina",
+    "state": "North Carolina",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gift": false
+  },
+  {
+    "country": "Belize",
+    "city": "Belize City",
+    "population": "61,461",
+    "image": "https://loremflickr.com/1200/800/belizecity,belize",
+    "state": "Belize District",
+    "latitude": 17.5046,
+    "longitude": -88.1962,
+    "gift": false
+  },
+  {
+    "country": "Honduras",
+    "city": "Coxen Hole",
+    "population": "5,060",
+    "image": "https://loremflickr.com/1200/800/roatan,honduras",
+    "state": "Bay Islands",
+    "latitude": 16.317,
+    "longitude": -86.537,
+    "gift": false
+  },
+  {
+    "country": "USA",
+    "city": "New Orleans",
+    "population": "364,136",
+    "image": "https://loremflickr.com/1200/800/neworleans,louisiana",
+    "state": "Louisiana",
+    "latitude": 29.9511,
+    "longitude": -90.0715,
+    "gift": false
+  },
+  {
+    "country": "Turkey",
+    "city": "Istanbul",
+    "population": "15,754,053",
+    "image": "https://loremflickr.com/1200/800/istanbul,turkey",
+    "state": "Istanbul Province",
+    "latitude": 41.0082,
+    "longitude": 28.9784,
+    "gift": false
+  },
+  {
     "city": "New York",
     "population": "8,175,133",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/240px-Above_Gotham.jpg",
