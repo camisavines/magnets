@@ -17,7 +17,7 @@ import Pin from './pin';
 
 import CITIES from './cities.json';
 
-const TOKEN = ''; // Set your mapbox token here
+const TOKEN = import.meta.env.VITE_TOKEN;
 
 // ---------------------------------------------------------------------------
 // Custom mapbox IControl that renders a single toolbar button.
