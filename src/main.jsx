@@ -17,9 +17,7 @@ const router = createBrowserRouter([
     path: "/location/:id",
     element: <DetailView />,
   },
-],   {
-    basename: "/magnets", // Sets your base URL/subdirectory
-  });
+]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
