@@ -121,15 +121,8 @@ export const Home = () => {
             onClose={() => setPopupInfo(null)}
           >
             <div>
-              {popupInfo.city}, {popupInfo.state} |{' '}
-              <a
-                target="_new"
-                href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${popupInfo.city}, ${popupInfo.state}`}
-              >
-                Wikipedia
-              </a>
+              {popupInfo.city}, {popupInfo.country === "USA" ? popupInfo.state : popupInfo.country}
             </div>
-            <img width="100%" src={popupInfo.image} />
             <Link
               to={`/location/${popupInfo.city.toLowerCase().replace(/\s+/g, '-')}`}
               state={popupInfo}
