@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useMemo, useCallback } from "react";
+import { useCities } from "../../context/CitiesContext";
 import { useNavigate, Link } from "react-router-dom";
 import Map, {
   Marker,
@@ -9,12 +10,12 @@ import Map, {
   ScaleControl,
   GeolocateControl,
   useControl,
+  Source,
+  Layer,
 } from "react-map-gl/mapbox";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./pin";
-
-import CITIES from "./cities.json";
 
 const TOKEN = import.meta.env.VITE_TOKEN;
 
@@ -64,6 +65,34 @@ function ListViewButton({ onClick }) {
   return null;
 }
 
+// Countries to highlight on the map (ISO 3166-1 alpha-2 codes)
+const HIGHLIGHT_COUNTRIES = [
+  "GH", // Ghana
+  "SN", // Senegal
+  "VN", // Vietnam
+  "GT", // Guatemala
+  "KE", // Kenya
+  "IN", // India
+  "QA", // Qatar
+  "TZ", // Tanzania
+  "MU", // Mauritius
+  "GR", // Greece
+  "CO", // Colombia
+  "BS", // Bahamas
+  "TT", // Trinidad & Tobago
+  "BB", // Barbados
+  "AG", // Antigua & Barbuda
+  "DO", // Dominican Republic
+  "PR", // Puerto Rico
+  "PT", // Portugal
+];
+
+const countryHighlightFilter = [
+  "in",
+  ["get", "iso_3166_1"],
+  ["literal", HIGHLIGHT_COUNTRIES],
+];
+
 // 'all' | 'gifts' | 'non-gifts'
 const GIFT_FILTER_OPTIONS = [
   { value: "all", label: "All" },
@@ -73,15 +102,16 @@ const GIFT_FILTER_OPTIONS = [
 
 export const Home = () => {
   const navigate = useNavigate();
+  const cities = useCities();
   const [popupInfo, setPopupInfo] = useState(null);
   const [giftFilter, setGiftFilter] = useState("all");
   const goToListView = useCallback(() => navigate("/list"), [navigate]);
 
   const visibleCities = useMemo(() => {
-    if (giftFilter === "gifts") return CITIES.filter((c) => c.gift === true);
-    if (giftFilter === "non-gifts") return CITIES.filter((c) => !c.gift);
-    return CITIES;
-  }, [giftFilter]);
+    if (giftFilter === "gifts") return cities.filter((c) => c.gift === true);
+    if (giftFilter === "non-gifts") return cities.filter((c) => !c.gift);
+    return cities;
+  }, [giftFilter, cities]);
 
   const pins = useMemo(
     () =>
@@ -123,6 +153,20 @@ export const Home = () => {
         <NavigationControl position="top-left" />
         <ScaleControl />
         <ListViewButton onClick={goToListView} />
+
+        <Source
+          id="country-boundaries"
+          type="vector"
+          url="mapbox://mapbox.country-boundaries-v1"
+        >
+          <Layer
+            id="highlighted-countries"
+            type="fill"
+            source-layer="country_boundaries"
+            paint={{ "fill-color": "#bf4ad9", "fill-opacity": 0.35 }}
+            filter={countryHighlightFilter}
+          />
+        </Source>
 
         {pins}
 
@@ -176,7 +220,7 @@ export const Home = () => {
             letterSpacing: "0.01em",
           }}
         >
-          Camisa's Travel Bucket List
+          Camisa's Travel Trinkets
         </span>
       </div>
 

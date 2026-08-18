@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState, useMemo, useCallback} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import CITIES from '../home/cities.json';
+import { useCities } from '../../context/CitiesContext';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -9,7 +9,7 @@ import CITIES from '../home/cities.json';
 
 /** Parse a population string like "1,234,567" → 1234567 */
 function parsePopulation(str = '') {
-  return parseInt(str.replace(/,/g, ''), 10) || 0;
+  return parseInt(String(str).replace(/,/g, ''), 10) || 0;
 }
 
 // Shared with Home map — keep the blue value in sync with pin.jsx PIN_COLOR_GIFT
@@ -261,26 +261,22 @@ const S = {
 
 export const ListView = () => {
   const navigate = useNavigate();
+  const cities = useCities();
 
   /* Sidebar collapse state — closed by default on mobile */
   const [sidebarOpen, setSidebarOpen] = useState(
     () => typeof window !== 'undefined' && window.innerWidth > 640
   );
 
-  /* Derive sorted unique countries & states from the dataset */
+  /* Derive sorted unique countries from the dataset */
   const allCountries = useMemo(
-    () => [...new Set(CITIES.map(c => c.country))].sort(),
-    []
-  );
-  const allStates = useMemo(
-    () => [...new Set(CITIES.map(c => c.state))].sort(),
-    []
+    () => [...new Set(cities.map(c => c.country))].sort(),
+    [cities]
   );
 
   /* Filter state */
   const [searchText, setSearchText] = useState('');
   const [selectedCountries, setSelectedCountries] = useState(new Set());
-  const [selectedStates, setSelectedStates] = useState(new Set());
   const [popRangeIndex, setPopRangeIndex] = useState(0); // 0 = "Any"
   const [giftFilter, setGiftFilter] = useState('all');
 
@@ -295,7 +291,6 @@ export const ListView = () => {
   const resetFilters = useCallback(() => {
     setSearchText('');
     setSelectedCountries(new Set());
-    setSelectedStates(new Set());
     setPopRangeIndex(0);
     setGiftFilter('all');
   }, []);
@@ -305,22 +300,20 @@ export const ListView = () => {
     const range = POPULATION_RANGES[popRangeIndex];
     const search = searchText.trim().toLowerCase();
 
-    return CITIES.filter(city => {
-      if (search && !city.city.toLowerCase().includes(search) && !city.state.toLowerCase().includes(search) && !city.country.toLowerCase().includes(search)) return false;
+    return cities.filter(city => {
+      if (search && !city.city.toLowerCase().includes(search) && !city.country.toLowerCase().includes(search)) return false;
       if (selectedCountries.size > 0 && !selectedCountries.has(city.country)) return false;
-      if (selectedStates.size > 0 && !selectedStates.has(city.state)) return false;
       const pop = parsePopulation(city.population);
       if (pop < range.min || pop >= range.max) return false;
       if (giftFilter === 'gifts'     && !city.gift)          return false;
       if (giftFilter === 'non-gifts' &&  city.gift === true)  return false;
       return true;
     });
-  }, [searchText, selectedCountries, selectedStates, popRangeIndex, giftFilter]);
+  }, [searchText, selectedCountries, popRangeIndex, giftFilter]);
 
   const hasActiveFilters =
     searchText.trim() !== '' ||
     selectedCountries.size > 0 ||
-    selectedStates.size > 0 ||
     popRangeIndex !== 0 ||
     giftFilter !== 'all';
 
@@ -339,7 +332,7 @@ export const ListView = () => {
         </button>
         <h1 style={S.toolbarTitle}>Cities</h1>
         <span style={S.toolbarCount}>
-          {filtered.length} of {CITIES.length} cities
+          {filtered.length} of {cities.length} cities
         </span>
         <button
           className="lv-filter-toggle"
@@ -445,21 +438,6 @@ export const ListView = () => {
           </div>
 
           <hr style={S.divider} />
-
-          {/* State / Region */}
-          <div style={S.filterSection}>
-            <span style={S.filterLabel}>State / Region</span>
-            {allStates.map(state => (
-              <label key={state} style={S.checkboxRow}>
-                <input
-                  type="checkbox"
-                  checked={selectedStates.has(state)}
-                  onChange={() => toggleSet(setSelectedStates, state)}
-                />
-                <span style={S.checkboxLabel}>{state}</span>
-              </label>
-            ))}
-          </div>
 
           {/* Reset */}
           {hasActiveFilters && (
