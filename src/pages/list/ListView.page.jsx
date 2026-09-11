@@ -2,7 +2,6 @@ import * as React from 'react';
 import {useState, useMemo, useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { useCities } from '../../context/CitiesContext';
-import { useRemovedBackground } from '../../hooks/useRemovedBackground';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -326,8 +325,11 @@ export const ListView = () => {
       if (selectedCountries.size > 0 && !selectedCountries.has(city.country)) return false;
       const pop = parsePopulation(city.population);
       if (pop < range.min || pop >= range.max) return false;
-      if (giftFilter === 'gifts'     && !city.gift)          return false;
-      if (giftFilter === 'non-gifts' &&  city.gift === true)  return false;
+      // gift filter: a city matches "gifts" if any of its magnets is a gift
+      const magnets = Array.isArray(city.magnets) ? city.magnets : [];
+      const hasGift = magnets.some(m => m.gift === true);
+      if (giftFilter === 'gifts'     && !hasGift)  return false;
+      if (giftFilter === 'non-gifts' &&  hasGift)  return false;
       return true;
     });
   }, [searchText, selectedCountries, popRangeIndex, giftFilter]);
@@ -481,10 +483,10 @@ export const ListView = () => {
             <div style={S.grid} className="lv-grid">
               {filtered.flatMap((city) =>
                 Array.isArray(city.magnets) && city.magnets.length > 0
-                  ? city.magnets.map((magnetSrc, i) => (
-                      <CityCard key={`${city.city}-${i}`} city={city} magnetSrc={magnetSrc} />
+                  ? city.magnets.map((magnet, i) => (
+                      <CityCard key={`${city.city}-${i}`} city={city} magnet={magnet} />
                     ))
-                  : [<CityCard key={city.city} city={city} magnetSrc={null} />]
+                  : [<CityCard key={city.city} city={city} magnet={null} />]
               )}
             </div>
           )}
@@ -527,15 +529,9 @@ export const ListView = () => {
 // CityCard
 // ---------------------------------------------------------------------------
 
-function CityCard({city, magnetSrc}) {
+function CityCard({city, magnet}) {
   const navigate = useNavigate();
   const citySlug = city.city.toLowerCase().replace(/\s+/g, '-');
-
-  // Only run bg removal when we have an actual magnet photo.
-  const { objectUrl, loading } = useRemovedBackground(magnetSrc ?? null);
-
-  // Fall back to the raw magnet src if removal failed.
-  const displaySrc = objectUrl ?? magnetSrc;
 
   return (
     <article
@@ -546,17 +542,14 @@ function CityCard({city, magnetSrc}) {
       onClick={() => navigate(`/city/${citySlug}`)}
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') navigate(`/city/${citySlug}`); }}
     >
-      {!magnetSrc ? (
+      {!magnet?.srcImg ? (
         <div style={S.cardImageBlank} />
-      ) : loading ? (
-        <div style={S.cardImageSkeleton}>Removing background…</div>
       ) : (
         <img
           style={S.cardImage}
-          src={displaySrc}
+          src={magnet.srcImg}
           alt={`${city.city} magnet`}
           loading="lazy"
-          onError={e => { e.currentTarget.src = magnetSrc; }}
         />
       )}
       <div style={S.cardBody}>
@@ -565,6 +558,9 @@ function CityCard({city, magnetSrc}) {
           {city.country === 'USA' ? `${city.state}, USA` : `${city.state}, ${city.country}`}
         </p>
         <p style={S.cardMeta}>👥 {city.population}</p>
+        {magnet?.gift === true && (
+          <span style={{fontSize: '11px', color: GIFT_PIN_COLOR, fontWeight: '600'}}>🎁 Gift</span>
+        )}
       </div>
     </article>
   );

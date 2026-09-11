@@ -108,29 +108,33 @@ export const Home = () => {
   const goToListView = useCallback(() => navigate("/list"), [navigate]);
 
   const visibleCities = useMemo(() => {
-    if (giftFilter === "gifts") return cities.filter((c) => c.gift === true);
-    if (giftFilter === "non-gifts") return cities.filter((c) => !c.gift);
+    const hasGift = (c) => Array.isArray(c.magnets) && c.magnets.some((m) => m.gift === true);
+    if (giftFilter === "gifts") return cities.filter(hasGift);
+    if (giftFilter === "non-gifts") return cities.filter((c) => !hasGift(c));
     return cities;
   }, [giftFilter, cities]);
 
   const pins = useMemo(
     () =>
-      visibleCities.map((city, index) => (
-        <Marker
-          key={`marker-${index}`}
-          longitude={city.longitude}
-          latitude={city.latitude}
-          anchor="bottom"
-          onClick={(e) => {
-            // If we let the click event propagates to the map, it will immediately close the popup
-            // with `closeOnClick: true`
-            e.originalEvent.stopPropagation();
-            setPopupInfo(city);
-          }}
-        >
-          <Pin gift={city.gift === true} />
-        </Marker>
-      )),
+      visibleCities.map((city, index) => {
+        const isGift = Array.isArray(city.magnets) && city.magnets.some((m) => m.gift === true);
+        return (
+          <Marker
+            key={`marker-${index}`}
+            longitude={city.longitude}
+            latitude={city.latitude}
+            anchor="bottom"
+            onClick={(e) => {
+              // If we let the click event propagates to the map, it will immediately close the popup
+              // with `closeOnClick: true`
+              e.originalEvent.stopPropagation();
+              setPopupInfo(city);
+            }}
+          >
+            <Pin gift={isGift} />
+          </Marker>
+        );
+      }),
     [visibleCities],
   );
 

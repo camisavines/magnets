@@ -140,32 +140,32 @@ const S = {
 // MagnetCard — single magnet within the city view
 // ---------------------------------------------------------------------------
 
-function MagnetCard({ magnet }) {
-  const detailPath = `/location/${magnet.city.toLowerCase().replace(/\s+/g, '-')}`;
+function MagnetCard({ city, magnet }) {
+  const detailPath = `/location/${city.city.toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
     <article style={S.card}>
       <img
         style={S.cardImage}
-        src={magnet.image}
-        alt={`${magnet.city} skyline`}
+        src={magnet.srcImg}
+        alt={`${city.city} magnet`}
         loading="lazy"
         onError={e => {
-          e.currentTarget.src = `https://picsum.photos/seed/${encodeURIComponent(magnet.city)}/480/300`;
+          e.currentTarget.src = `https://picsum.photos/seed/${encodeURIComponent(city.city)}/480/300`;
         }}
       />
       <div style={S.cardBody}>
-        <p style={S.cardCity}>{magnet.city}</p>
+        <p style={S.cardCity}>{city.city}</p>
         <p style={S.cardCountry}>
-          {magnet.country === 'USA'
-            ? `${magnet.state}, USA`
-            : `${magnet.state}, ${magnet.country}`}
+          {city.country === 'USA'
+            ? `${city.state}, USA`
+            : `${city.state}, ${city.country}`}
         </p>
-        <p style={S.cardMeta}>👥 {magnet.population}</p>
+        <p style={S.cardMeta}>👥 {city.population}</p>
         {magnet.gift === true && (
           <span style={S.giftBadge}>🎁 Gift</span>
         )}
-        <Link to={detailPath} state={magnet} style={S.cardLink}>
+        <Link to={detailPath} state={{...city, srcImg: magnet.srcImg}} style={S.cardLink}>
           View details →
         </Link>
       </div>
@@ -180,21 +180,18 @@ function MagnetCard({ magnet }) {
 export const CityView = () => {
   const { citySlug } = useParams();
   const navigate = useNavigate();
-  const allMagnets = useCities();
+  const allCities = useCities();
 
   // Derive a display name from the slug while the data loads
   const slugToName = citySlug.replace(/-/g, ' ');
 
-  const cityMagnets = React.useMemo(
-    () =>
-      allMagnets.filter(
-        m => m.city.toLowerCase().replace(/\s+/g, '-') === citySlug
-      ),
-    [allMagnets, citySlug]
+  const matchingCity = React.useMemo(
+    () => allCities.find(c => c.city.toLowerCase().replace(/\s+/g, '-') === citySlug) ?? null,
+    [allCities, citySlug]
   );
 
-  // Resolve the canonical city name from the first matching magnet (if any)
-  const cityName = cityMagnets.length > 0 ? cityMagnets[0].city : slugToName;
+  const cityName = matchingCity ? matchingCity.city : slugToName;
+  const magnets = matchingCity?.magnets ?? [];
 
   return (
     <div style={S.page}>
@@ -210,16 +207,16 @@ export const CityView = () => {
           ←
         </button>
         <h1 style={S.toolbarTitle}>{cityName}</h1>
-        {cityMagnets.length > 0 && (
+        {magnets.length > 0 && (
           <span style={S.toolbarCount}>
-            {cityMagnets.length} magnet{cityMagnets.length !== 1 ? 's' : ''}
+            {magnets.length} magnet{magnets.length !== 1 ? 's' : ''}
           </span>
         )}
       </div>
 
       {/* ── Body ── */}
       <div style={S.body}>
-        {cityMagnets.length === 0 ? (
+        {magnets.length === 0 ? (
           <div style={S.emptyState}>
             <p style={S.emptyStateHeading}>No magnets found</p>
             <p>
@@ -229,8 +226,8 @@ export const CityView = () => {
           </div>
         ) : (
           <div style={S.grid}>
-            {cityMagnets.map((magnet, index) => (
-              <MagnetCard key={`${magnet.city}-${index}`} magnet={magnet} />
+            {magnets.map((magnet, index) => (
+              <MagnetCard key={`${citySlug}-${index}`} city={matchingCity} magnet={magnet} />
             ))}
           </div>
         )}
