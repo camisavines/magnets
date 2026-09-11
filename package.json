@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@carbon/react": "^1.116.0",
     "@imgly/background-removal": "^1.7.0",
     "@vis.gl/react-mapbox": "^8.1.2",
     "firebase": "^12.17.1",
@@ -19,6 +18,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-map-gl": "^8.1.2",
+    "react-photo-view": "^1.2.7",
     "react-router-dom": "^7.18.2"
   },
   "devDependencies": {

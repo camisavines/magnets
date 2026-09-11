@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 import { useCities } from "../../context/CitiesContext";
 
 // ---------------------------------------------------------------------------
@@ -148,6 +150,7 @@ const S = {
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
+    cursor: "pointer",
   },
   cardImage: {
     width: "100%",
@@ -207,27 +210,25 @@ const S = {
 // ---------------------------------------------------------------------------
 
 function MagnetCard({ city, magnet }) {
-  console.log(city);
-  const detailPath = `/city/${city.city.toLowerCase().replace(/\s+/g, "-")}`;
-
   return (
-    <article style={S.card}>
-      <img
-        style={S.cardImage}
-        src={magnet.srcImg}
-        alt={`${city.city} magnet`}
-        loading="lazy"
-        onError={(e) => {
-          e.currentTarget.src = `https://picsum.photos/seed/${encodeURIComponent(city.city)}/480/300`;
-        }}
-      />
-
-      {magnet.gift && (
-        <span style={{ padding: "0.5", margin: "-2rem -2rem 0 0.5rem" }}>
-          🎁
-        </span>
-      )}
-    </article>
+    <PhotoView src={magnet.srcImg}>
+      <article style={S.card}>
+        <img
+          style={S.cardImage}
+          src={magnet.srcImg}
+          alt={`${city.city} magnet`}
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.src = `https://picsum.photos/seed/${encodeURIComponent(city.city)}/480/300`;
+          }}
+        />
+        {magnet.gift && (
+          <span style={{ padding: "0.5", margin: "-2rem -2rem 0 0.5rem" }}>
+            🎁
+          </span>
+        )}
+      </article>
+    </PhotoView>
   );
 }
 
@@ -343,15 +344,17 @@ export const CityView = () => {
               </p>
             </div>
           ) : (
-            <div style={S.grid} className="magnet-grid">
-              {magnets.map((magnet, index) => (
-                <MagnetCard
-                  key={`${citySlug}-${index}`}
-                  city={matchingCity}
-                  magnet={magnet}
-                />
-              ))}
-            </div>
+            <PhotoProvider>
+              <div style={S.grid} className="magnet-grid">
+                {magnets.map((magnet, index) => (
+                  <MagnetCard
+                    key={`${citySlug}-${index}`}
+                    city={matchingCity}
+                    magnet={magnet}
+                  />
+                ))}
+              </div>
+            </PhotoProvider>
           )}
         </div>
       </div>
