@@ -18,9 +18,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./pin";
 
 const TOKEN = import.meta.env.TOKEN;
-// const TOKEN = import.meta.env.TOKEN;
-
-console.log("token", TOKEN)
 
 // ---------------------------------------------------------------------------
 // Custom mapbox IControl that renders a single toolbar button.

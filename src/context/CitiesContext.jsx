@@ -11,7 +11,7 @@ export function CitiesProvider({ children }) {
     const rootRef = ref(db, "/");
     const unsubscribe = onValue(rootRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("Firebase root data:", data);
+      // console.log("Firebase root data:", data);
       if (data) setCities(Object.values(data));
     });
     return () => unsubscribe();
