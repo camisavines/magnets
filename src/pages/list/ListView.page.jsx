@@ -1,33 +1,33 @@
-import * as React from 'react';
-import {useState, useMemo, useCallback} from 'react';
-import {useNavigate} from 'react-router-dom';
-import { useCities } from '../../context/CitiesContext';
+import * as React from "react";
+import { useState, useMemo, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCities } from "../../context/CitiesContext";
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
 /** Parse a population string like "1,234,567" → 1234567 */
-function parsePopulation(str = '') {
-  return parseInt(String(str).replace(/,/g, ''), 10) || 0;
+function parsePopulation(str = "") {
+  return parseInt(String(str).replace(/,/g, ""), 10) || 0;
 }
 
 // Shared with Home map — keep the blue value in sync with pin.jsx PIN_COLOR_GIFT
-const GIFT_PIN_COLOR = '#1a6edb';
+const GIFT_PIN_COLOR = "#1a6edb";
 
 const GIFT_FILTER_OPTIONS = [
-  {value: 'all',       label: 'All'},
-  {value: 'gifts',     label: 'Gifts only'},
-  {value: 'non-gifts', label: 'Non-gifts only'},
+  { value: "all", label: "All" },
+  { value: "gifts", label: "Gifts only" },
+  { value: "non-gifts", label: "Non-gifts only" },
 ];
 
 const POPULATION_RANGES = [
-  {label: 'Any', min: 0, max: Infinity},
-  {label: 'Under 100 K', min: 0, max: 100_000},
-  {label: '100 K – 500 K', min: 100_000, max: 500_000},
-  {label: '500 K – 1 M', min: 500_000, max: 1_000_000},
-  {label: '1 M – 5 M', min: 1_000_000, max: 5_000_000},
-  {label: 'Over 5 M', min: 5_000_000, max: Infinity},
+  { label: "Any", min: 0, max: Infinity },
+  { label: "Under 100 K", min: 0, max: 100_000 },
+  { label: "100 K – 500 K", min: 100_000, max: 500_000 },
+  { label: "500 K – 1 M", min: 500_000, max: 1_000_000 },
+  { label: "1 M – 5 M", min: 1_000_000, max: 5_000_000 },
+  { label: "Over 5 M", min: 5_000_000, max: Infinity },
 ];
 
 // ---------------------------------------------------------------------------
@@ -37,241 +37,241 @@ const POPULATION_RANGES = [
 const S = {
   /* Root */
   page: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
     fontFamily: '-apple-system, "Segoe UI", system-ui, sans-serif',
-    background: '#111213',
+    background: "#111213",
   },
 
   /* Top toolbar */
   toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    padding: '10px 16px',
-    background: '#1a1c1f',
-    borderBottom: '1px solid #2e3238',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    padding: "10px 16px",
+    background: "#1a1c1f",
+    borderBottom: "1px solid #2e3238",
+    boxShadow: "0 1px 4px rgba(0,0,0,0.4)",
     zIndex: 10,
     flexShrink: 0,
   },
   backButton: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '30px',
-    height: '30px',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "30px",
+    height: "30px",
     padding: 0,
-    border: '1px solid #3a3f47',
-    borderRadius: '6px',
-    background: '#22252a',
-    color: '#e8eaed',
-    cursor: 'pointer',
-    fontSize: '16px',
-    lineHeight: '1',
+    border: "1px solid #3a3f47",
+    borderRadius: "6px",
+    background: "#22252a",
+    color: "#e8eaed",
+    cursor: "pointer",
+    fontSize: "16px",
+    lineHeight: "1",
   },
   toolbarTitle: {
     margin: 0,
-    fontSize: '15px',
-    fontWeight: '700',
-    color: '#e8eaed',
+    fontSize: "15px",
+    fontWeight: "700",
+    color: "#e8eaed",
   },
   toolbarCount: {
-    marginLeft: 'auto',
-    fontSize: '13px',
-    color: '#8b9098',
+    marginLeft: "auto",
+    fontSize: "13px",
+    color: "#8b9098",
   },
 
   /* Two-column body */
   body: {
-    display: 'flex',
+    display: "flex",
     flex: 1,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
 
   /* ── Sidebar ── */
   sidebar: {
-    width: '25%',
-    minWidth: '220px',
-    maxWidth: '320px',
-    background: '#1a1c1f',
-    borderRight: '1px solid #2e3238',
-    overflowY: 'auto',
-    padding: '20px 16px',
+    width: "25%",
+    minWidth: "220px",
+    maxWidth: "320px",
+    background: "#1a1c1f",
+    borderRight: "1px solid #2e3238",
+    overflowY: "auto",
+    padding: "20px 16px",
     flexShrink: 0,
   },
   sidebarHeading: {
-    margin: '0 0 16px',
-    fontSize: '13px',
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    color: '#8b9098',
+    margin: "0 0 16px",
+    fontSize: "13px",
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    color: "#8b9098",
   },
   filterSection: {
-    marginBottom: '24px',
+    marginBottom: "24px",
   },
   filterLabel: {
-    display: 'block',
-    marginBottom: '8px',
-    fontSize: '13px',
-    fontWeight: '600',
-    color: '#c9cdd4',
+    display: "block",
+    marginBottom: "8px",
+    fontSize: "13px",
+    fontWeight: "600",
+    color: "#c9cdd4",
   },
   searchInput: {
-    width: '100%',
-    padding: '7px 10px',
-    fontSize: '13px',
-    border: '1px solid #3a3f47',
-    borderRadius: '6px',
-    outline: 'none',
-    background: '#22252a',
-    color: '#e8eaed',
+    width: "100%",
+    padding: "7px 10px",
+    fontSize: "13px",
+    border: "1px solid #3a3f47",
+    borderRadius: "6px",
+    outline: "none",
+    background: "#22252a",
+    color: "#e8eaed",
   },
   checkboxRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '4px 0',
-    cursor: 'pointer',
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "4px 0",
+    cursor: "pointer",
   },
   checkboxLabel: {
-    fontSize: '13px',
-    color: '#c9cdd4',
-    userSelect: 'none',
-    cursor: 'pointer',
+    fontSize: "13px",
+    color: "#c9cdd4",
+    userSelect: "none",
+    cursor: "pointer",
   },
   radioRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '4px 0',
-    cursor: 'pointer',
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "4px 0",
+    cursor: "pointer",
   },
   radioLabel: {
-    fontSize: '13px',
-    color: '#c9cdd4',
-    userSelect: 'none',
-    cursor: 'pointer',
+    fontSize: "13px",
+    color: "#c9cdd4",
+    userSelect: "none",
+    cursor: "pointer",
   },
   resetButton: {
-    marginTop: '4px',
-    width: '100%',
-    padding: '8px',
-    fontSize: '13px',
-    fontWeight: '600',
-    color: '#4da3ff',
-    background: 'transparent',
-    border: '1px solid #1a6edb',
-    borderRadius: '6px',
-    cursor: 'pointer',
+    marginTop: "4px",
+    width: "100%",
+    padding: "8px",
+    fontSize: "13px",
+    fontWeight: "600",
+    color: "#4da3ff",
+    background: "transparent",
+    border: "1px solid #1a6edb",
+    borderRadius: "6px",
+    cursor: "pointer",
   },
   divider: {
-    border: 'none',
-    borderTop: '1px solid #2e3238',
-    margin: '0 0 24px',
+    border: "none",
+    borderTop: "1px solid #2e3238",
+    margin: "0 0 24px",
   },
 
   /* ── Card area ── */
   cardArea: {
     flex: 1,
-    overflowY: 'auto',
-    padding: '20px',
+    overflowY: "auto",
+    padding: "20px",
   },
   grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-    gap: '16px',
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+    gap: "16px",
   },
   emptyState: {
-    textAlign: 'center',
-    padding: '60px 20px',
-    color: '#8b9098',
-    fontSize: '14px',
+    textAlign: "center",
+    padding: "60px 20px",
+    color: "#8b9098",
+    fontSize: "14px",
   },
 
   /* ── Card ── */
   card: {
-    background: '#1a1c1f',
-    borderRadius: '10px',
-    border: '1px solid #2e3238',
-    boxShadow: '0 2px 6px rgba(0,0,0,0.35)',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
+    background: "#1a1c1f",
+    borderRadius: "10px",
+    border: "1px solid #2e3238",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.35)",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
   },
   cardImageBlank: {
-    width: '100%',
-    height: '150px',
-    background: '#000',
-    display: 'block',
+    width: "100%",
+    height: "150px",
+    background: "#000",
+    display: "block",
   },
   cardImage: {
-    width: '100%',
-    height: '150px',
-    objectFit: 'contain',
-    display: 'block',
-    background: '#22252a',
-    padding: '8px',
+    width: "100%",
+    height: "150px",
+    objectFit: "contain",
+    display: "block",
+    background: "#22252a",
+    padding: "8px",
   },
   cardImageSkeleton: {
-    width: '100%',
-    height: '150px',
-    background: 'linear-gradient(90deg, #22252a 25%, #2e3238 50%, #22252a 75%)',
-    backgroundSize: '200% 100%',
-    animation: 'lv-shimmer 1.4s infinite',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '11px',
-    color: '#57606a',
-    letterSpacing: '0.04em',
+    width: "100%",
+    height: "150px",
+    background: "linear-gradient(90deg, #22252a 25%, #2e3238 50%, #22252a 75%)",
+    backgroundSize: "200% 100%",
+    animation: "lv-shimmer 1.4s infinite",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "11px",
+    color: "#57606a",
+    letterSpacing: "0.04em",
   },
   cardBody: {
-    padding: '12px 14px 14px',
+    padding: "12px 14px 14px",
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
   },
   cardCity: {
     margin: 0,
-    fontSize: '15px',
-    fontWeight: '700',
-    color: '#e8eaed',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    fontSize: "15px",
+    fontWeight: "700",
+    color: "#e8eaed",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   cardCountry: {
     margin: 0,
-    fontSize: '12px',
-    color: '#8b9098',
+    fontSize: "12px",
+    color: "#8b9098",
   },
   cardMeta: {
-    margin: '4px 0 0',
-    fontSize: '12px',
-    color: '#8b9098',
+    margin: "4px 0 0",
+    fontSize: "12px",
+    color: "#8b9098",
   },
   cardLink: {
-    marginTop: '10px',
-    fontSize: '12px',
-    color: '#4da3ff',
-    textDecoration: 'none',
-    fontWeight: '600',
+    marginTop: "10px",
+    fontSize: "12px",
+    color: "#4da3ff",
+    textDecoration: "none",
+    fontWeight: "600",
   },
 
   /* Mobile-only filter toggle button (hidden on desktop via CSS) */
   filterToggleButton: {
-    padding: '5px 10px',
-    fontSize: '12px',
-    fontWeight: '600',
-    color: '#c9cdd4',
-    background: '#22252a',
-    border: '1px solid #3a3f47',
-    borderRadius: '6px',
-    cursor: 'pointer',
+    padding: "5px 10px",
+    fontSize: "12px",
+    fontWeight: "600",
+    color: "#c9cdd4",
+    background: "#22252a",
+    border: "1px solid #3a3f47",
+    borderRadius: "6px",
+    cursor: "pointer",
   },
 };
 
@@ -285,23 +285,23 @@ export const ListView = () => {
 
   /* Sidebar collapse state — closed by default on mobile */
   const [sidebarOpen, setSidebarOpen] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth > 640
+    () => typeof window !== "undefined" && window.innerWidth > 640,
   );
 
   /* Derive sorted unique countries from the dataset */
   const allCountries = useMemo(
-    () => [...new Set(cities.map(c => c.country))].sort(),
-    [cities]
+    () => [...new Set(cities.map((c) => c.country))].sort(),
+    [cities],
   );
 
   /* Filter state */
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [selectedCountries, setSelectedCountries] = useState(new Set());
   const [popRangeIndex, setPopRangeIndex] = useState(0); // 0 = "Any"
-  const [giftFilter, setGiftFilter] = useState('all');
+  const [giftFilter, setGiftFilter] = useState("all");
 
   const toggleSet = useCallback((setter, value) => {
-    setter(prev => {
+    setter((prev) => {
       const next = new Set(prev);
       next.has(value) ? next.delete(value) : next.add(value);
       return next;
@@ -309,42 +309,54 @@ export const ListView = () => {
   }, []);
 
   const resetFilters = useCallback(() => {
-    setSearchText('');
+    setSearchText("");
     setSelectedCountries(new Set());
     setPopRangeIndex(0);
-    setGiftFilter('all');
+    setGiftFilter("all");
   }, []);
 
-  /* Filtered cities */
+  /* Filtered + sorted cities */
   const filtered = useMemo(() => {
     const range = POPULATION_RANGES[popRangeIndex];
     const search = searchText.trim().toLowerCase();
 
-    return cities.filter(city => {
-      if (search && !city.city.toLowerCase().includes(search) && !city.country.toLowerCase().includes(search)) return false;
-      if (selectedCountries.size > 0 && !selectedCountries.has(city.country)) return false;
-      const pop = parsePopulation(city.population);
-      if (pop < range.min || pop >= range.max) return false;
-      // gift filter: a city matches "gifts" if any of its magnets is a gift
-      const magnets = Array.isArray(city.magnets) ? city.magnets : [];
-      const hasGift = magnets.some(m => m.gift === true);
-      if (giftFilter === 'gifts'     && !hasGift)  return false;
-      if (giftFilter === 'non-gifts' &&  hasGift)  return false;
-      return true;
-    });
+    return cities
+      .filter((city) => {
+        if (
+          search &&
+          !city.city.toLowerCase().includes(search) &&
+          !city.country.toLowerCase().includes(search)
+        )
+          return false;
+        if (selectedCountries.size > 0 && !selectedCountries.has(city.country))
+          return false;
+        const pop = parsePopulation(city.population);
+        if (pop < range.min || pop >= range.max) return false;
+        // gift filter: a city matches "gifts" if any of its magnets is a gift
+        const magnets = Array.isArray(city.magnets) ? city.magnets : [];
+        const hasGift = magnets.some((m) => m.gift === true);
+        if (giftFilter === "gifts" && !hasGift) return false;
+        if (giftFilter === "non-gifts" && hasGift) return false;
+        return true;
+      })
+      .sort((a, b) => a.city.localeCompare(b.city));
   }, [searchText, selectedCountries, popRangeIndex, giftFilter]);
 
   const filteredMagnetCount = useMemo(
-    () => filtered.reduce((sum, city) =>
-      sum + (Array.isArray(city.magnets) ? city.magnets.length : 0), 0),
-    [filtered]
+    () =>
+      filtered.reduce(
+        (sum, city) =>
+          sum + (Array.isArray(city.magnets) ? city.magnets.length : 0),
+        0,
+      ),
+    [filtered],
   );
 
   const hasActiveFilters =
-    searchText.trim() !== '' ||
+    searchText.trim() !== "" ||
     selectedCountries.size > 0 ||
     popRangeIndex !== 0 ||
-    giftFilter !== 'all';
+    giftFilter !== "all";
 
   return (
     <div style={S.page}>
@@ -355,13 +367,14 @@ export const ListView = () => {
           type="button"
           title="Back to Map"
           aria-label="Back to Map"
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         >
           ←
         </button>
         <h1 style={S.toolbarTitle}>Magnets</h1>
         <span style={S.toolbarCount}>
-          {filtered.length} of {cities.length} cities · {filteredMagnetCount} magnets
+          {filtered.length} of {cities.length} cities · {filteredMagnetCount}{" "}
+          magnets
         </span>
         <button
           className="lv-filter-toggle"
@@ -369,9 +382,10 @@ export const ListView = () => {
           type="button"
           aria-expanded={sidebarOpen}
           aria-controls="lv-sidebar"
-          onClick={() => setSidebarOpen(o => !o)}
+          onClick={() => setSidebarOpen((o) => !o)}
         >
-          {sidebarOpen ? '✕ Filters' : '⚙ Filters'}{hasActiveFilters ? ' •' : ''}
+          {sidebarOpen ? "✕ Filters" : "⚙ Filters"}
+          {hasActiveFilters ? " •" : ""}
         </button>
       </div>
 
@@ -382,7 +396,7 @@ export const ListView = () => {
           id="lv-sidebar"
           style={{
             ...S.sidebar,
-            ...(sidebarOpen ? {} : {display: 'none'}),
+            ...(sidebarOpen ? {} : { display: "none" }),
           }}
           className="lv-sidebar"
           aria-label="Filter panel"
@@ -391,13 +405,15 @@ export const ListView = () => {
 
           {/* Search */}
           <div style={S.filterSection}>
-            <label style={S.filterLabel} htmlFor="city-search">City, state, or country</label>
+            <label style={S.filterLabel} htmlFor="city-search">
+              City, state, or country
+            </label>
             <input
               id="city-search"
               type="search"
               placeholder="Search by city, state, or country…"
               value={searchText}
-              onChange={e => setSearchText(e.target.value)}
+              onChange={(e) => setSearchText(e.target.value)}
               style={S.searchInput}
             />
           </div>
@@ -425,7 +441,7 @@ export const ListView = () => {
           {/* Country */}
           <div style={S.filterSection}>
             <span style={S.filterLabel}>Country</span>
-            {allCountries.map(country => (
+            {allCountries.map((country) => (
               <label key={country} style={S.checkboxRow}>
                 <input
                   type="checkbox"
@@ -442,7 +458,7 @@ export const ListView = () => {
           {/* Gift Status */}
           <div style={S.filterSection}>
             <span style={S.filterLabel}>Gift Status</span>
-            {GIFT_FILTER_OPTIONS.map(opt => (
+            {GIFT_FILTER_OPTIONS.map((opt) => (
               <label key={opt.value} style={S.radioRow}>
                 <input
                   type="radio"
@@ -454,13 +470,46 @@ export const ListView = () => {
               </label>
             ))}
             {/* Mini legend */}
-            <div style={{marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '3px'}}>
-              <span style={{display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#777'}}>
-                <svg width="10" height="10" viewBox="0 0 24 24"><path d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z" fill={GIFT_PIN_COLOR}/></svg>
+            <div
+              style={{
+                marginTop: "8px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "3px",
+              }}
+            >
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  fontSize: "12px",
+                  color: "#777",
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24">
+                  <path
+                    d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z"
+                    fill={GIFT_PIN_COLOR}
+                  />
+                </svg>
                 Gift
               </span>
-              <span style={{display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#777'}}>
-                <svg width="10" height="10" viewBox="0 0 24 24"><path d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z" fill="#d00"/></svg>
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  fontSize: "12px",
+                  color: "#777",
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24">
+                  <path
+                    d="M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9C20.1,15.8,20.2,15.8,20.2,15.7z"
+                    fill="#d00"
+                  />
+                </svg>
                 Not a gift
               </span>
             </div>
@@ -481,7 +530,11 @@ export const ListView = () => {
           {filtered.length === 0 ? (
             <div style={S.emptyState}>
               <p>No cities match the selected filters.</p>
-              <button style={S.resetButton} type="button" onClick={resetFilters}>
+              <button
+                style={S.resetButton}
+                type="button"
+                onClick={resetFilters}
+              >
                 Reset filters
               </button>
             </div>
@@ -490,9 +543,13 @@ export const ListView = () => {
               {filtered.flatMap((city) =>
                 Array.isArray(city.magnets) && city.magnets.length > 0
                   ? city.magnets.map((magnet, i) => (
-                      <CityCard key={`${city.city}-${i}`} city={city} magnet={magnet} />
+                      <CityCard
+                        key={`${city.city}-${i}`}
+                        city={city}
+                        magnet={magnet}
+                      />
                     ))
-                  : [<CityCard key={city.city} city={city} magnet={null} />]
+                  : [<CityCard key={city.city} city={city} magnet={null} />],
               )}
             </div>
           )}
@@ -535,18 +592,20 @@ export const ListView = () => {
 // CityCard
 // ---------------------------------------------------------------------------
 
-function CityCard({city, magnet}) {
+function CityCard({ city, magnet }) {
   const navigate = useNavigate();
-  const citySlug = city.city.toLowerCase().replace(/\s+/g, '-');
+  const citySlug = city.city.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <article
-      style={{...S.card, cursor: 'pointer'}}
+      style={{ ...S.card, cursor: "pointer" }}
       role="button"
       tabIndex={0}
       aria-label={`View all magnets for ${city.city}`}
       onClick={() => navigate(`/city/${citySlug}`)}
-      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') navigate(`/city/${citySlug}`); }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") navigate(`/city/${citySlug}`);
+      }}
     >
       {!magnet?.srcImg ? (
         <div style={S.cardImageBlank} />
@@ -563,10 +622,17 @@ function CityCard({city, magnet}) {
         <p style={S.cardCountry}>
           {city.state ? `${city.state},` : ""} {city.country}
         </p>
-        <p style={S.cardMeta}>👥 {city.population}</p>
-        {magnet?.gift === true && (
-          <span style={{fontSize: '11px', color: GIFT_PIN_COLOR, fontWeight: '600'}}>🎁 Gift</span>
-        )}
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p style={S.cardMeta}>👥 {city.population}</p>
+          {magnet?.gift === true && <p style={S.cardMeta}>🎁</p>}
+        </div>
       </div>
     </article>
   );

@@ -190,7 +190,7 @@ export const Home = () => {
                 : popupInfo.country}
             </div>
             <Link
-              to={`/location/${popupInfo.city.toLowerCase().replace(/\s+/g, "-")}`}
+              to={`/city/${popupInfo.city.toLowerCase().replace(/\s+/g, "-")}`}
               state={popupInfo}
               style={{ display: "block", marginTop: "6px", fontSize: "12px" }}
             >
@@ -256,7 +256,7 @@ export const Home = () => {
             letterSpacing: "0.06em",
           }}
         >
-          Gift Status
+          Legend
         </p>
         {GIFT_FILTER_OPTIONS.map((opt) => (
           <label
@@ -323,6 +323,20 @@ export const Home = () => {
               />
             </svg>
             Not a gift
+          </span>
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              fontSize: "12px",
+              color: "#555",
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12">
+              <rect width="12" height="12" rx="2" fill="#bf4ad9" fillOpacity="0.35" stroke="#bf4ad9" strokeWidth="1" />
+            </svg>
+            Bucket list
           </span>
         </div>
       </div>
