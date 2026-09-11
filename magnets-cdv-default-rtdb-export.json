@@ -222,6 +222,10 @@
       {
         "gift": false,
         "srcImg": "https://raw.githubusercontent.com/camisavines/magnets/refs/heads/main/public/images/processed/tokyo-4.png"
+      },
+      {
+        "gift": false,
+        "srcImg": "https://raw.githubusercontent.com/camisavines/magnets/refs/heads/main/public/images/processed/tokyo-5.png"
       }
     ],
     "population": "14,047,594",
@@ -1056,7 +1060,7 @@
   {
     "city": "Atlanta",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/atlanta,georgia",
+    "image": "https://loremflickr.com/1200/800/atlanta",
     "latitude": 33.749,
     "longitude": -84.388,
     "magnets": [

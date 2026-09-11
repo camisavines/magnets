@@ -17,7 +17,10 @@ import Map, {
 import "mapbox-gl/dist/mapbox-gl.css";
 import Pin from "./pin";
 
-const TOKEN = import.meta.env.VITE_TOKEN;
+const TOKEN = import.meta.env.TOKEN;
+// const TOKEN = import.meta.env.TOKEN;
+
+console.log("token", TOKEN)
 
 // ---------------------------------------------------------------------------
 // Custom mapbox IControl that renders a single toolbar button.
@@ -108,8 +111,13 @@ export const Home = () => {
   const goToListView = useCallback(() => navigate("/list"), [navigate]);
 
   const visibleCities = useMemo(() => {
-    const hasCoords = (c) => c.latitude != null && c.longitude != null && !isNaN(c.latitude) && !isNaN(c.longitude);
-    const hasGift = (c) => Array.isArray(c.magnets) && c.magnets.some((m) => m.gift === true);
+    const hasCoords = (c) =>
+      c.latitude != null &&
+      c.longitude != null &&
+      !isNaN(c.latitude) &&
+      !isNaN(c.longitude);
+    const hasGift = (c) =>
+      Array.isArray(c.magnets) && c.magnets.some((m) => m.gift === true);
     const located = cities.filter(hasCoords);
     if (giftFilter === "gifts") return located.filter(hasGift);
     if (giftFilter === "non-gifts") return located.filter((c) => !hasGift(c));
@@ -119,7 +127,9 @@ export const Home = () => {
   const pins = useMemo(
     () =>
       visibleCities.map((city, index) => {
-        const isGift = Array.isArray(city.magnets) && city.magnets.some((m) => m.gift === true);
+        const isGift =
+          Array.isArray(city.magnets) &&
+          city.magnets.some((m) => m.gift === true);
         return (
           <Marker
             key={`marker-${index}`}
@@ -169,7 +179,8 @@ export const Home = () => {
             id="highlighted-countries"
             type="fill"
             source-layer="country_boundaries"
-            paint={{ "fill-color": "#bf4ad9", "fill-opacity": 0.35 }}
+            paint={{ "fill-color": "#F5E2C8", "fill-opacity": 0.35 }}
+            // paint={{ "fill-color": "#bf4ad9", "fill-opacity": 0.35 }}
             filter={countryHighlightFilter}
           />
         </Source>
@@ -183,19 +194,19 @@ export const Home = () => {
             latitude={Number(popupInfo.latitude)}
             onClose={() => setPopupInfo(null)}
           >
-            <div>
+            <div style={{ padding: "0.5rem", textAlign: "center" }}>
               {popupInfo.city},{" "}
               {popupInfo.country === "USA"
                 ? popupInfo.state
                 : popupInfo.country}
+              <Link
+                to={`/city/${popupInfo.city.toLowerCase().replace(/\s+/g, "-")}`}
+                state={popupInfo}
+                style={{ display: "block", fontSize: "12px" }}
+              >
+                View details
+              </Link>
             </div>
-            <Link
-              to={`/city/${popupInfo.city.toLowerCase().replace(/\s+/g, "-")}`}
-              state={popupInfo}
-              style={{ display: "block", marginTop: "6px", fontSize: "12px" }}
-            >
-              View details →
-            </Link>
           </Popup>
         )}
       </Map>
@@ -334,7 +345,15 @@ export const Home = () => {
             }}
           >
             <svg width="12" height="12" viewBox="0 0 12 12">
-              <rect width="12" height="12" rx="2" fill="#bf4ad9" fillOpacity="0.35" stroke="#bf4ad9" strokeWidth="1" />
+              <rect
+                width="12"
+                height="12"
+                rx="2"
+                fill="#bf4ad9"
+                fillOpacity="0.35"
+                stroke="#bf4ad9"
+                strokeWidth="1"
+              />
             </svg>
             Bucket list
           </span>
