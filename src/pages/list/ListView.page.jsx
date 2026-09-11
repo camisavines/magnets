@@ -334,6 +334,12 @@ export const ListView = () => {
     });
   }, [searchText, selectedCountries, popRangeIndex, giftFilter]);
 
+  const filteredMagnetCount = useMemo(
+    () => filtered.reduce((sum, city) =>
+      sum + (Array.isArray(city.magnets) ? city.magnets.length : 0), 0),
+    [filtered]
+  );
+
   const hasActiveFilters =
     searchText.trim() !== '' ||
     selectedCountries.size > 0 ||
@@ -353,9 +359,9 @@ export const ListView = () => {
         >
           ←
         </button>
-        <h1 style={S.toolbarTitle}>Cities</h1>
+        <h1 style={S.toolbarTitle}>Magnets</h1>
         <span style={S.toolbarCount}>
-          {filtered.length} of {cities.length} cities
+          {filtered.length} of {cities.length} cities · {filteredMagnetCount} magnets
         </span>
         <button
           className="lv-filter-toggle"
@@ -555,7 +561,7 @@ function CityCard({city, magnet}) {
       <div style={S.cardBody}>
         <p style={S.cardCity}>{city.city}</p>
         <p style={S.cardCountry}>
-          {city.country === 'USA' ? `${city.state}, USA` : `${city.state}, ${city.country}`}
+          {city.state ? `${city.state},` : ""} {city.country}
         </p>
         <p style={S.cardMeta}>👥 {city.population}</p>
         {magnet?.gift === true && (

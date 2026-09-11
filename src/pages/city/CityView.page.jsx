@@ -159,7 +159,7 @@ function MagnetCard({ city, magnet }) {
         <p style={S.cardCountry}>
           {city.country === 'USA'
             ? `${city.state}, USA`
-            : `${city.state}, ${city.country}`}
+            : `${city.state && ","} ${city.country}`}
         </p>
         <p style={S.cardMeta}>👥 {city.population}</p>
         {magnet.gift === true && (
