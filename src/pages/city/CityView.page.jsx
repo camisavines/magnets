@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useMemo } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { useCities } from "../../context/CitiesContext";
@@ -117,7 +117,7 @@ const S = {
     borderRadius: "20px",
     background: "#1a3a6e",
     color: "#4da3ff",
-    border: "1px solid #1a6edb",
+    border: "1px solid #305CDE",
     alignSelf: "flex-start",
   },
   // Right panel — magnet grid
@@ -158,50 +158,6 @@ const S = {
     objectFit: "cover",
     display: "block",
     background: "#22252a",
-  },
-  cardBody: {
-    padding: "12px 14px 14px",
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    gap: "4px",
-  },
-  cardCity: {
-    margin: 0,
-    fontSize: "15px",
-    fontWeight: "700",
-    color: "#e8eaed",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-  cardCountry: {
-    margin: 0,
-    fontSize: "12px",
-    color: "#8b9098",
-  },
-  cardMeta: {
-    margin: "4px 0 0",
-    fontSize: "12px",
-    color: "#8b9098",
-  },
-  cardLink: {
-    marginTop: "10px",
-    fontSize: "12px",
-    color: "#4da3ff",
-    textDecoration: "none",
-    fontWeight: "600",
-  },
-  giftBadge: {
-    display: "inline-block",
-    marginTop: "6px",
-    padding: "2px 8px",
-    fontSize: "11px",
-    fontWeight: "600",
-    borderRadius: "4px",
-    background: "#1a3a6e",
-    color: "#4da3ff",
-    border: "1px solid #1a6edb",
   },
 };
 
@@ -244,7 +200,7 @@ export const CityView = () => {
   // Derive a display name from the slug while the data loads
   const slugToName = citySlug.replace(/-/g, " ");
 
-  const matchingCity = React.useMemo(
+  const matchingCity = useMemo(
     () =>
       allCities.find(
         (c) => c.city.toLowerCase().replace(/\s+/g, "-") === citySlug,
