@@ -50,6 +50,14 @@ const S = {
     fontSize: '13px',
     color: '#8b9098',
   },
+  hero: {
+    width: '100%',
+    height: '20vh',
+    objectFit: 'cover',
+    display: 'block',
+    background: '#22252a',
+    flexShrink: 0,
+  },
   body: {
     flex: 1,
     padding: '24px',
@@ -141,6 +149,7 @@ const S = {
 // ---------------------------------------------------------------------------
 
 function MagnetCard({ city, magnet }) {
+  console.log(city)
   const detailPath = `/location/${city.city.toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
@@ -213,6 +222,15 @@ export const CityView = () => {
           </span>
         )}
       </div>
+
+      {/* ── Hero ── */}
+      {matchingCity?.image && (
+        <img
+          style={S.hero}
+          src={matchingCity.image}
+          alt={`${cityName} hero`}
+        />
+      )}
 
       {/* ── Body ── */}
       <div style={S.body}>

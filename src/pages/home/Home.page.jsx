@@ -108,10 +108,12 @@ export const Home = () => {
   const goToListView = useCallback(() => navigate("/list"), [navigate]);
 
   const visibleCities = useMemo(() => {
+    const hasCoords = (c) => c.latitude != null && c.longitude != null && !isNaN(c.latitude) && !isNaN(c.longitude);
     const hasGift = (c) => Array.isArray(c.magnets) && c.magnets.some((m) => m.gift === true);
-    if (giftFilter === "gifts") return cities.filter(hasGift);
-    if (giftFilter === "non-gifts") return cities.filter((c) => !hasGift(c));
-    return cities;
+    const located = cities.filter(hasCoords);
+    if (giftFilter === "gifts") return located.filter(hasGift);
+    if (giftFilter === "non-gifts") return located.filter((c) => !hasGift(c));
+    return located;
   }, [giftFilter, cities]);
 
   const pins = useMemo(
@@ -203,8 +205,7 @@ export const Home = () => {
         style={{
           position: "absolute",
           top: "16px",
-          right: "-100px",
-          // left: "50%",
+          left: "50%",
           transform: "translateX(-50%)",
           background: "rgba(20, 22, 25, 0.82)",
           border: "1px solid rgba(255,255,255,0.1)",

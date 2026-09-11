@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Home, ListView, DetailView, CityView, BackgroundRemovalPage } from "./pages/index.jsx";
+import { Home, ListView, CityView, BackgroundRemovalPage } from "./pages/index.jsx";
 import { CitiesProvider } from "./context/CitiesContext.jsx";
 import "./index.css";
 
@@ -13,10 +13,6 @@ const router = createBrowserRouter([
   {
     path: "/list",
     element: <ListView />,
-  },
-  {
-    path: "/location/:id",
-    element: <DetailView />,
   },
   {
     path: "/city/:citySlug",

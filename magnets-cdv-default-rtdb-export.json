@@ -36,7 +36,7 @@
   {
     "city": "Austin",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/austin,texas",
+    "image": "https://wallpapercave.com/wp/wp7031121.jpg",
     "latitude": 30.2672,
     "longitude": -97.7431,
     "magnets": [
@@ -242,7 +242,7 @@
       },
       {
         "gift": false,
-        "srcImg": "https://raw.githubusercontent.com/camisavines/magnets/refs/heads/main/public/images/processed/osaka-1.png"
+        "srcImg": "https://raw.githubusercontent.com/camisavines/magnets/refs/heads/main/public/images/processed/osaka-2.png"
       }
     ]
   },
@@ -395,10 +395,6 @@
       {
         "gift": false,
         "srcImg": "https://raw.githubusercontent.com/camisavines/magnets/refs/heads/main/public/images/processed/orlando-3.png"
-      },
-      {
-        "gift": false,
-        "srcImg": "https://raw.githubusercontent.com/camisavines/magnets/refs/heads/main/public/images/processed/orlando-4.png"
       }
     ],
     "population": "333,888",
