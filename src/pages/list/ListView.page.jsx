@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {useState, useMemo, useCallback} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { useCities } from '../../context/CitiesContext';
+import { useRemovedBackground } from '../../hooks/useRemovedBackground';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -201,12 +202,32 @@ const S = {
     display: 'flex',
     flexDirection: 'column',
   },
+  cardImageBlank: {
+    width: '100%',
+    height: '150px',
+    background: '#000',
+    display: 'block',
+  },
   cardImage: {
     width: '100%',
     height: '150px',
-    objectFit: 'cover',
+    objectFit: 'contain',
     display: 'block',
     background: '#22252a',
+    padding: '8px',
+  },
+  cardImageSkeleton: {
+    width: '100%',
+    height: '150px',
+    background: 'linear-gradient(90deg, #22252a 25%, #2e3238 50%, #22252a 75%)',
+    backgroundSize: '200% 100%',
+    animation: 'lv-shimmer 1.4s infinite',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '11px',
+    color: '#57606a',
+    letterSpacing: '0.04em',
   },
   cardBody: {
     padding: '12px 14px 14px',
@@ -458,9 +479,13 @@ export const ListView = () => {
             </div>
           ) : (
             <div style={S.grid} className="lv-grid">
-              {filtered.map((city, index) => (
-                <CityCard key={`${city.city}-${index}`} city={city} />
-              ))}
+              {filtered.flatMap((city) =>
+                Array.isArray(city.magnets) && city.magnets.length > 0
+                  ? city.magnets.map((magnetSrc, i) => (
+                      <CityCard key={`${city.city}-${i}`} city={city} magnetSrc={magnetSrc} />
+                    ))
+                  : [<CityCard key={city.city} city={city} magnetSrc={null} />]
+              )}
             </div>
           )}
         </main>
@@ -468,6 +493,10 @@ export const ListView = () => {
 
       {/* Responsive styles */}
       <style>{`
+        @keyframes lv-shimmer {
+          0%   { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
         /* Hide the filter toggle button on desktop */
         .lv-filter-toggle { display: none; }
 
@@ -498,29 +527,44 @@ export const ListView = () => {
 // CityCard
 // ---------------------------------------------------------------------------
 
-function CityCard({city}) {
-  const detailPath = `/location/${city.city.toLowerCase().replace(/\s+/g, '-')}`;
+function CityCard({city, magnetSrc}) {
+  const navigate = useNavigate();
+  const citySlug = city.city.toLowerCase().replace(/\s+/g, '-');
+
+  // Only run bg removal when we have an actual magnet photo.
+  const { objectUrl, loading } = useRemovedBackground(magnetSrc ?? null);
+
+  // Fall back to the raw magnet src if removal failed.
+  const displaySrc = objectUrl ?? magnetSrc;
 
   return (
-    <article style={S.card}>
-      <img
-        style={S.cardImage}
-        src={city.image}
-        alt={`${city.city} skyline`}
-        loading="lazy"
-        onError={e => {
-          e.currentTarget.src = `https://picsum.photos/seed/${encodeURIComponent(city.city)}/480/300`;
-        }}
-      />
+    <article
+      style={{...S.card, cursor: 'pointer'}}
+      role="button"
+      tabIndex={0}
+      aria-label={`View all magnets for ${city.city}`}
+      onClick={() => navigate(`/city/${citySlug}`)}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') navigate(`/city/${citySlug}`); }}
+    >
+      {!magnetSrc ? (
+        <div style={S.cardImageBlank} />
+      ) : loading ? (
+        <div style={S.cardImageSkeleton}>Removing background…</div>
+      ) : (
+        <img
+          style={S.cardImage}
+          src={displaySrc}
+          alt={`${city.city} magnet`}
+          loading="lazy"
+          onError={e => { e.currentTarget.src = magnetSrc; }}
+        />
+      )}
       <div style={S.cardBody}>
         <p style={S.cardCity}>{city.city}</p>
         <p style={S.cardCountry}>
           {city.country === 'USA' ? `${city.state}, USA` : `${city.state}, ${city.country}`}
         </p>
         <p style={S.cardMeta}>👥 {city.population}</p>
-        <Link to={detailPath} state={city} style={S.cardLink}>
-          View details →
-        </Link>
       </div>
     </article>
   );
