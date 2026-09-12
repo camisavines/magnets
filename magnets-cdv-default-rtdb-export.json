@@ -2,7 +2,7 @@
   {
     "city": "South Bend",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/southbend,indiana",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Downtown_South_Bend.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
     "latitude": 41.6764,
     "longitude": -86.252,
     "magnets": [
@@ -21,7 +21,7 @@
   {
     "city": "Bloomington",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/bloomington,indiana",
+    "image": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_495,q_65,w_583,x_1728,y_1417/v1/clients/bloomington/SampleGatesFall_Sunrise_10_edit_2f20bd0e-3463-416b-98ad-f45f347e29d1.jpg",
     "latitude": 39.1653,
     "longitude": -86.5264,
     "magnets": [
@@ -71,7 +71,7 @@
   {
     "city": "Houston",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/houston,texas",
+    "image": "https://venue-media.eventup.com/resized/venue/sugar-room-on-washington-ave/b370.1920x1080.jpg",
     "latitude": 29.7604,
     "longitude": -95.3698,
     "magnets": [
@@ -90,7 +90,7 @@
   {
     "city": "San Antonio",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/sanantonio,texas",
+    "image": "https://d1ycuases8oak2.cloudfront.net/wp-content/uploads/2019/11/TXCavaliers_RiverParade_KingAntonio2.jpg",
     "latitude": 29.4241,
     "longitude": -98.4936,
     "magnets": [
@@ -105,7 +105,7 @@
   {
     "city": "Miami",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/miami,florida",
+    "image": "https://images.trvl-media.com/place/800070/02ee0441-a9dd-4b32-bb53-9644902187e1.jpg",
     "latitude": 25.7617,
     "longitude": -80.1918,
     "magnets": [
@@ -120,7 +120,7 @@
   {
     "city": "San Francisco",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/sanfrancisco,california",
+    "image": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,h_800,q_65,w_640/v1/clients/fishermanswharfca/Pier_39_8b7f0490-02a0-4151-a2c5-4526ec417eda.jpg",
     "latitude": 37.7749,
     "longitude": -122.4194,
     "magnets": [
@@ -143,7 +143,7 @@
   {
     "city": "Santa Cruz",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/santacruz,california",
+    "image": "https://www.traveler.com/wp-content/uploads/2022/07/1.jpg",
     "latitude": 36.9741,
     "longitude": -122.0308,
     "magnets": [
@@ -158,7 +158,7 @@
   {
     "city": "San Jose",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/sanjose,california",
+    "image": "https://californiathroughmylens.com/wp-content/uploads/2023/03/day-in-san-jose-1-2.jpg",
     "latitude": 37.3382,
     "longitude": -121.8863,
     "magnets": [
@@ -207,7 +207,7 @@
   {
     "city": "Tokyo",
     "country": "Japan",
-    "image": "https://loremflickr.com/1200/800/tokyo,japan",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKWgVf2PKJrqWkqAx_wyKTRPNRGeMfroVSJXysg67gLuaHeNAvqeKTv6wb&s=10",
     "latitude": 35.6762,
     "longitude": 139.6503,
     "magnets": [
@@ -234,7 +234,7 @@
   {
     "city": "Osaka",
     "country": "Japan",
-    "image": "https://loremflickr.com/1200/800/osaka,japan",
+    "image": "https://www.royalcaribbean.com/media-assets/pmc/content/dam/shore-x/osaka-osa/y9mr-osaka-sky-building-landmarks-english-guide/Y9MR-osaka-sky-building-landmarks-english-guide-bridge.jpg?w=1920",
     "latitude": 34.6937,
     "longitude": 135.5023,
     "population": "2,811,565",
@@ -253,7 +253,7 @@
   {
     "city": "Rio de Janeiro",
     "country": "Brazil",
-    "image": "https://loremflickr.com/1200/800/rio,de,janeiro,brazil",
+    "image": "https://www.traveloffpath.com/wp-content/uploads/2023/08/Tourists-Taking-Pictures-Up-And-Down-Escadaria-Selaron-A-Famous-Colorful-Tile-Laden-Staircase-In-Lapa-A-Central-District-Of-Rio-de-Janeiro-Brazil-South-America.jpg",
     "latitude": -22.9068,
     "longitude": -43.1729,
     "magnets": [
@@ -296,7 +296,7 @@
   {
     "city": "Providenciales",
     "country": "Turks and Caicos Islands",
-    "image": "https://loremflickr.com/1200/800/providenciales,turksandcaicos",
+    "image": "https://i0.wp.com/providencialesmap.com/wp-content/uploads/2023/10/500-sunset-point-villa-aerial-turks-caicos-copy.jpg?resize=500%2C543&ssl=1",
     "latitude": 21.773,
     "longitude": -72.2659,
     "magnets": [
@@ -319,7 +319,7 @@
   {
     "city": "Cancún",
     "country": "Mexico",
-    "image": "https://loremflickr.com/1200/800/cancun,mexico",
+    "image": "https://www.agoda.com/wp-content/uploads/2024/03/Featured-image-Cancun-beach-with-resorts-Mexico.jpg",
     "latitude": 21.1619,
     "longitude": -86.8515,
     "magnets": [
@@ -338,7 +338,7 @@
   {
     "city": "Cozumel",
     "country": "Mexico",
-    "image": "https://loremflickr.com/1200/800/cozumel,mexico",
+    "image": "https://cruisefever.net/wp-content/uploads/2019/01/symphony-162.jpg",
     "latitude": 20.4229,
     "longitude": -86.9224,
     "magnets": [
@@ -357,7 +357,7 @@
   {
     "city": "Castries",
     "country": "Saint Lucia",
-    "image": "https://loremflickr.com/1200/800/castries,saintlucia",
+    "image": "https://a-us.storyblok.com/f/1005231/299c182b28/st-lucia_caribbean-southern_3516.jpg",
     "latitude": 14.0101,
     "longitude": -60.9875,
     "magnets": [
@@ -384,7 +384,7 @@
   {
     "city": "Orlando",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/orlando,florida",
+    "image": "https://www.apartmentguide.com/blog/wp-content/uploads/2024/05/shutterstock_2403732433.jpg",
     "latitude": 28.5383,
     "longitude": -81.3792,
     "magnets": [
@@ -407,7 +407,7 @@
   {
     "city": "Raleigh",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/raleigh,northcarolina",
+    "image": "https://i0.wp.com/raleighmag.com/wp-content/uploads/2023/04/Dreamville-Festival-Sean-Paul.jpeg?fit=2048%2C1536&ssl=1",
     "latitude": 35.7796,
     "longitude": -78.6382,
     "magnets": [
@@ -426,7 +426,7 @@
   {
     "city": "Belize City",
     "country": "Belize",
-    "image": "https://loremflickr.com/1200/800/belizecity,belize",
+    "image": "https://media.timeout.com/images/105239971/image.jpg",
     "latitude": 17.5046,
     "longitude": -88.1962,
     "magnets": [
@@ -441,7 +441,7 @@
   {
     "city": "Coxen Hole",
     "country": "Honduras",
-    "image": "https://loremflickr.com/1200/800/roatan,honduras",
+    "image": "https://i0.wp.com/shirleysjourneys.com/wp-content/uploads/2022/07/1BD68B55-36DC-4634-AFCB-FAA1894663C7_1_105_c.jpeg?resize=840%2C630&ssl=1",
     "latitude": 16.317,
     "longitude": -86.537,
     "magnets": [
@@ -456,7 +456,7 @@
   {
     "city": "New Orleans",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/neworleans,louisiana",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUp6xo1Y-iOizI1KPMEHPVGhd7MoQ01B7lBMLzlPn35bdgRNJ9F6wtRd4&s=10",
     "latitude": 29.9511,
     "longitude": -90.0715,
     "magnets": [
@@ -475,7 +475,7 @@
   {
     "city": "Istanbul",
     "country": "Turkey",
-    "image": "https://loremflickr.com/1200/800/istanbul,turkey",
+    "image": "https://turkeytravelplanner.com/wp-content/uploads/2022/06/Shopping-in-Turkey-What-to-Buy-scaled.jpg",
     "latitude": 41.0082,
     "longitude": 28.9784,
     "magnets": [
@@ -490,7 +490,7 @@
   {
     "city": "New York",
     "country": "USA",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Above_Gotham.jpg/240px-Above_Gotham.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Pc1JNDUBZIeKZCwiIRNlOAnnHdxIGMXuEdukIUSlxZ7ZZ-Pt6Iy7jIOF&s=10",
     "latitude": 40.6643,
     "longitude": -73.9385,
     "magnets": [
@@ -524,7 +524,7 @@
   {
     "city": "Phoenix",
     "country": "USA",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Downtown_Phoenix_Aerial_Looking_Northeast.jpg/207px-Downtown_Phoenix_Aerial_Looking_Northeast.jpg",
+    "image": "https://wnpa.org/sites/default/files/styles/max_2600x2600/public/2025-05/Phoenix_Arizona_Shutterstock_Resized%20Photos%20%282551%20x%201500%20px%29.png?itok=uRuSU4m7",
     "latitude": 33.5722,
     "longitude": -112.088,
     "magnets": [
@@ -539,7 +539,7 @@
   {
     "city": "Indianapolis",
     "country": "USA",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Downtown_indy_from_parking_garage_zoom.JPG/213px-Downtown_indy_from_parking_garage_zoom.JPG",
+    "image": "https://npr.brightspotcdn.com/dims4/default/82fd4f6/2147483647/strip/true/crop/1024x683+0+0/resize/880x587!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Ffiles%2Fwfyi%2Farticles%2Foriginal%2Fap25165127359439.jpg",
     "latitude": 39.7767,
     "longitude": -86.1459,
     "magnets": [
@@ -554,7 +554,7 @@
   {
     "city": "Honolulu",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/honolulu,hawaii",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/d2/5b/48/caption.jpg?w=1200&h=-1&s=1&cx=1920&cy=1080&chk=v1_422515422c5239d76e06",
     "latitude": 21.292973,
     "longitude": -157.846012,
     "magnets": [
@@ -573,7 +573,7 @@
   {
     "city": "Nice",
     "country": "France",
-    "image": "https://loremflickr.com/1200/800/nice,france",
+    "image": "https://i0.wp.com/thymewithcaroline.com/wp-content/uploads/2024/09/48-hours-in-nice.jpg?fit=768%2C1024&ssl=1",
     "latitude": 43.7102,
     "longitude": 7.262,
     "magnets": [
@@ -588,7 +588,7 @@
   {
     "city": "Cannes",
     "country": "France",
-    "image": "https://loremflickr.com/1200/800/cannes,france",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStGJnCcu8C95P34fnzrfq3sYFIODI67AQAKF7aI711PSMDfVTwjAp0B1G1&s=10",
     "latitude": 43.5528,
     "longitude": 7.0174,
     "population": "74,152",
@@ -603,7 +603,7 @@
   {
     "city": "Monaco",
     "country": "Monaco",
-    "image": "https://loremflickr.com/1200/800/monaco",
+    "image": "https://travellermade.com/wp-content/uploads/2012/07/%C2%A9BVergely-Lot15-nov.2021-13_addcrop.jpg",
     "latitude": 43.7384,
     "longitude": 7.4246,
     "magnets": [
@@ -618,7 +618,7 @@
   {
     "city": "Marseille",
     "country": "France",
-    "image": "https://loremflickr.com/1200/800/marseille,france",
+    "image": "https://media.cntraveller.com/photos/611beddcabe0ca68331f96b4/1:1/w_2000,h_2000,c_limit/frank-mannion-marseilles-best-beaches-cnt-19june18-gettyimages-512136713.jpg",
     "latitude": 43.2965,
     "longitude": 5.3698,
     "magnets": [
@@ -633,7 +633,7 @@
   {
     "city": "New Buffalo",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/newbuffalo,michigan",
+    "image": "https://offloadmedia.feverup.com/secretchicago.com/wp-content/uploads/2024/05/29181126/new-buffalo-1024x684.jpeg",
     "latitude": 41.7942,
     "longitude": -86.7448,
     "magnets": [
@@ -652,7 +652,7 @@
   {
     "city": "Willemstad",
     "country": "Curaçao",
-    "image": "https://loremflickr.com/1200/800/willemstad,curacao",
+    "image": "https://www.atastefortravel.ca/wp-content/uploads/2026/03/Pietermaai-DP.jpg",
     "latitude": 12.1091,
     "longitude": -68.9316,
     "magnets": [
@@ -667,7 +667,7 @@
   {
     "city": "Marrakech",
     "country": "Morocco",
-    "image": "https://loremflickr.com/1200/800/marrakech,morocco",
+    "image": "https://photos.smugmug.com/Maroc-Lovers/Marrakech/Best-of/i-ndkDKqQ/0/MdjJHrfFVwWgQ2FV8nHzXkSZkvkLDPWv87rhFPPkK/L/best%20thisng%20to%20do%20marrakech-11-L.jpg",
     "latitude": 31.6295,
     "longitude": -7.9811,
     "magnets": [
@@ -680,9 +680,9 @@
     "state": ""
   },
   {
-    "city": "Washington",
+    "city": "Washington DC",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/washingtondc",
+    "image": "https://i.redd.it/lincoln-memorial-oh-louisiana-v0-wr76l28fjraf1.jpg?width=640&format=pjpg&auto=webp&s=36216a002a24fa63cec33506a01cbb896b886586",
     "latitude": 38.9072,
     "longitude": -77.0369,
     "magnets": [
@@ -705,7 +705,7 @@
   {
     "city": "San José",
     "country": "Costa Rica",
-    "image": "https://loremflickr.com/1200/800/sanjose,costarica",
+    "image": "https://images.ctfassets.net/wv75stsetqy3/71a3qI8xgUNw8Y1BmqeH5L/614446b2cf562e6028511f86e07880e1/migrated-pb0HGN-Post_content_image__6869136?q=60&fit=fill&fm=webp",
     "latitude": 9.9281,
     "longitude": -84.0907,
     "magnets": [
@@ -720,7 +720,7 @@
   {
     "city": "Beijing",
     "country": "China",
-    "image": "https://loremflickr.com/1200/800/beijing,china",
+    "image": "https://afar.brightspotcdn.com/dims4/default/be8e2a6/2147483647/strip/true/crop/3000x1592+0+213/resize/1440x764!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F1f%2F58%2F349510d34220a70218ec7bb92600%2Ftravelguides-beijing-meiqianbao-shutterstock.jpg",
     "latitude": 39.9042,
     "longitude": 116.4074,
     "population": "21,540,000",
@@ -729,7 +729,7 @@
   {
     "city": "Chongqing",
     "country": "China",
-    "image": "https://loremflickr.com/1200/800/chongqing,china",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpzcfMBki64-60IPh4g31AIWd6JnHVPeAXvjYVTHESMOLqVxF5w1CsJ8SH&s=10",
     "latitude": 29.4316,
     "longitude": 106.9123,
     "population": "32,054,159",
@@ -738,7 +738,7 @@
   {
     "city": "Bangkok",
     "country": "Thailand",
-    "image": "https://loremflickr.com/1200/800/bangkok,thailand",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_KItN1VQ7xvY6HkhTJb9Vm30vy8Gq3SvNNEkM_fTmr-0daqonpbYoVElS&s=10",
     "latitude": 13.7563,
     "longitude": 100.5018,
     "population": "10,539,000",
@@ -747,7 +747,7 @@
   {
     "city": "Phuket",
     "country": "Thailand",
-    "image": "https://loremflickr.com/1200/800/phuket,thailand",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/5f/56/ff/caption.jpg?w=1200&h=-1&s=1&cx=1920&cy=1080&chk=v1_bd4b389bb0e606d8647d",
     "latitude": 7.8804,
     "longitude": 98.3923,
     "population": "85,000",
@@ -756,7 +756,7 @@
   {
     "city": "Memphis",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/memphis,tennessee",
+    "image": "https://i0.wp.com/handluggageonly.co.uk/wp-content/uploads/2018/06/6I9A5600.jpg?resize=1000%2C1500&ssl=1",
     "latitude": 35.1495,
     "longitude": -90.049,
     "magnets": [
@@ -771,7 +771,7 @@
   {
     "city": "Tulsa",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/tulsa,oklahoma",
+    "image": "https://cdn.britannica.com/38/64338-050-C07A63BF/Tulsa-Oklahoma.jpg",
     "latitude": 36.154,
     "longitude": -95.9928,
     "magnets": [
@@ -786,7 +786,7 @@
   {
     "city": "Panama City",
     "country": "Panama",
-    "image": "https://loremflickr.com/1200/800/panamacity,panama",
+    "image": "https://cdn.kimkim.com/files/a/images/3830675a279fca5aa9518ab73f7a58ca0de3cbad/original-df9939a6f203001ae79fb76e3e66545e.jpg",
     "latitude": 8.9824,
     "longitude": -79.5199,
     "magnets": [
@@ -801,7 +801,7 @@
   {
     "city": "Trenton",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/trenton,newjersey",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0UxcC2GqD17_bMTacL4LP6un4SqNaQWCFnHDfXLKp1g&s",
     "latitude": 40.2206,
     "longitude": -74.7597,
     "magnets": [
@@ -816,7 +816,7 @@
   {
     "city": "Mexico City",
     "country": "Mexico",
-    "image": "https://loremflickr.com/1200/800/mexicocity,mexico",
+    "image": "https://i.natgeofe.com/n/6c02ad5a-977b-4f12-b9c0-02ffb0736e07/metropolitan-cathedral-zocalo-mexico-city.JPG",
     "latitude": 19.4326,
     "longitude": -99.1332,
     "magnets": [
@@ -831,7 +831,7 @@
   {
     "city": "Bern",
     "country": "Switzerland",
-    "image": "https://loremflickr.com/1200/800/bern,switzerland",
+    "image": "https://ciaobambino.com/wp-content/uploads/2018/02/switzerland-with-kids-mannlichen.jpg",
     "latitude": 46.948,
     "longitude": 7.4474,
     "magnets": [
@@ -846,7 +846,7 @@
   {
     "city": "Toronto",
     "country": "Canada",
-    "image": "https://loremflickr.com/1200/800/toronto,canada",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/7f/ab/fd/canada-place.jpg?w=900&h=500&s=1",
     "latitude": 43.6532,
     "longitude": -79.3832,
     "magnets": [
@@ -861,7 +861,7 @@
   {
     "city": "Destin",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/destin,florida",
+    "image": "https://www.enjoyflorida.com/wp-content/uploads/2025/09/twilight-view-from-harbor-of-harborwalk-village-destin.jpg",
     "latitude": 30.3935,
     "longitude": -86.4958,
     "magnets": [
@@ -876,7 +876,7 @@
   {
     "city": "Paris",
     "country": "France",
-    "image": "https://loremflickr.com/1200/800/paris,france",
+    "image": "https://www.grayline.com/wp-content/uploads/2025/01/shutterstock_667548661-scaled.jpg",
     "latitude": 48.8566,
     "longitude": 2.3522,
     "magnets": [
@@ -891,7 +891,7 @@
   {
     "city": "Barcelona",
     "country": "Spain",
-    "image": "https://loremflickr.com/1200/800/barcelona,spain",
+    "image": "https://cdn.getyourguide.com/image/format=avif%2Cfit=cover%2Cgravity=auto%2Cquality=60/dam/logan-armstrong-hVhfqhDYciU-unsplash-edited-MOBILE-HEADER.jpg",
     "latitude": 41.3874,
     "longitude": 2.1686,
     "magnets": [
@@ -906,7 +906,7 @@
   {
     "city": "Lyon",
     "country": "France",
-    "image": "https://loremflickr.com/1200/800/lyon,france",
+    "image": "https://frenchsidetravel.com/wp-content/uploads/2022/06/lyon-france-city-shutterstock.jpg",
     "latitude": 45.764,
     "longitude": 4.8357,
     "magnets": [
@@ -921,7 +921,7 @@
   {
     "city": "Baltimore",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/baltimore,maryland",
+    "image": "https://mssi.com/wp-content/uploads/2022/10/MD-Baltimore-2-scaled.jpg",
     "latitude": 39.2904,
     "longitude": -76.6122,
     "magnets": [
@@ -940,7 +940,7 @@
   {
     "city": "Charlotte Amalie",
     "country": "US Virgin Islands",
-    "image": "https://loremflickr.com/1200/800/charlotteamalie,usvirginislands",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/3d/fe/bb/views-from-blue-beards.jpg?w=1400&h=-1&s=1",
     "latitude": 18.3419,
     "longitude": -64.9307,
     "magnets": [
@@ -955,7 +955,7 @@
   {
     "city": "Saint Paul",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/saintpaul,minnesota",
+    "image": "https://cdn.crowdriff.com/in-use/d869ae68-deec-8d8a-75a9-b74110ec3030/1080.jpg",
     "latitude": 44.9537,
     "longitude": -93.09,
     "magnets": [
@@ -970,7 +970,7 @@
   {
     "city": "Cairo",
     "country": "Egypt",
-    "image": "https://loremflickr.com/1200/800/cairo,egypt",
+    "image": "https://www.insightvacations.com/media/qzelhxft/wonders-egypt-guided-tour-13.jpg",
     "latitude": 30.0444,
     "longitude": 31.2357,
     "magnets": [
@@ -985,7 +985,7 @@
   {
     "city": "Cypress",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/cypress,texas",
+    "image": "https://www.rollsroyceluxuryliving.com/wp-content/uploads/2021/08/Cypress-Tab-pic.jpeg",
     "latitude": 29.9691,
     "longitude": -95.6972,
     "magnets": [
@@ -1000,7 +1000,7 @@
   {
     "city": "Wellington",
     "country": "New Zealand",
-    "image": "https://loremflickr.com/1200/800/wellington,newzealand",
+    "image": "https://images.trvl-media.com/place/553248635922898688/9b2d99d2-9a80-420a-8480-133b1e24acc4.jpg",
     "latitude": -41.2865,
     "longitude": 174.7762,
     "magnets": [
@@ -1015,7 +1015,7 @@
   {
     "city": "Kingston",
     "country": "Jamaica",
-    "image": "https://loremflickr.com/1200/800/kingston,jamaica",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuuyRMrPxHyWX2gGoQlvhIkQN-aj9MLCLbTJey1fUPK3IkyW6hSljzInc&s=10",
     "latitude": 17.9712,
     "longitude": -76.7936,
     "magnets": [
@@ -1030,7 +1030,7 @@
   {
     "city": "Dublin",
     "country": "Ireland",
-    "image": "https://loremflickr.com/1200/800/dublin,ireland",
+    "image": "https://travelingcanucks.com/wp-content/uploads/2018/03/ireland-top-attractions-06.jpg",
     "latitude": 53.3498,
     "longitude": -6.2603,
     "magnets": [
@@ -1045,7 +1045,7 @@
   {
     "city": "Nassau",
     "country": "The Bahamas",
-    "image": "https://loremflickr.com/1200/800/nassau,bahamas",
+    "image": "https://images.surferseo.art/57b59653-98e8-4d4b-a051-c45d75243bca.jpeg",
     "latitude": 25.0443,
     "longitude": -77.3504,
     "magnets": [
@@ -1060,7 +1060,7 @@
   {
     "city": "Atlanta",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/atlanta",
+    "image": "https://www.secretfoodtours.com/blog/wp-content/uploads/2025/04/peter-pham-v5yVy3IhSRU-unsplash.jpg",
     "latitude": 33.749,
     "longitude": -84.388,
     "magnets": [
@@ -1075,7 +1075,7 @@
   {
     "city": "Madison",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/madison,wisconsin",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDxEid5ZdkJ8RkjFJvkfXTuLVpBUF1BshBwNMaxgtalXb9bZ8fHKnGC5va&s=10",
     "latitude": 43.0731,
     "longitude": -89.4012,
     "magnets": [
@@ -1090,7 +1090,7 @@
   {
     "city": "Key West",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/keywest,florida",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/Southernmost_point_buoy%2C_NE_view.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
     "latitude": 24.5551,
     "longitude": -81.7799,
     "magnets": [
@@ -1105,7 +1105,7 @@
   {
     "city": "Myrtle Beach",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/myrtlebeach,southcarolina",
+    "image": "https://blog.northmyrtlebeachtravel.com/wp-content/uploads/2024/01/Wordpress-Monthly-Feature-Image-13.png",
     "latitude": 33.6891,
     "longitude": -78.8867,
     "magnets": [
@@ -1120,7 +1120,7 @@
   {
     "city": "Pittsburgh",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/pittsburgh,pennsylvania",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkwxlkHyK2B7h1m0N9M436V0JwZnyJ5GfycLEOMjcovcixA3H5gC2OdrEm&s=10",
     "latitude": 40.4406,
     "longitude": -79.9959,
     "magnets": [
@@ -1135,7 +1135,7 @@
   {
     "city": "St. Louis",
     "country": "USA",
-    "image": "https://loremflickr.com/1200/800/stlouis,missouri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/45/St_Louis_night.jpg?utm_source=simple.wikipedia.org&utm_campaign=index&utm_content=original",
     "latitude": 38.627,
     "longitude": -90.1994,
     "magnets": [
@@ -1150,7 +1150,7 @@
   {
     "city": "Other",
     "country": "I just think these are cool",
-    "image": "",
+    "image": "https://media.tenor.com/edPWfcaEIkoAAAAM/ultimatehighz-ultimatehigh.gif",
     "latitude": null,
     "longitude": null,
     "magnets": [
